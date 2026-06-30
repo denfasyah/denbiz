@@ -13,9 +13,9 @@ Dokumen ini berisi panduan tahap demi tahap untuk membangun website profil agens
 * [x] **Task 1.5:** Bersihkan boilerplate default Next.js di `page.tsx` dan `globals.css`.
 
 ## Fase 2: Pengembangan Komponen UI Reusable (Estimasi: 1-2 Hari)
-* [ ] **Task 2.1:** Buat komponen `Button` (Variant: Primary, Outline, Text) di `src/components/ui/Button.tsx`.
-* [ ] **Task 2.2:** Buat komponen `Input`, `Textarea`, dan `Select` untuk form (pilihan layanannya diubah menjadi khusus web).
-* [ ] **Task 2.3:** Buat layout shell utama: `Navbar` (logo, link, tombol CTA) dan `Footer`.
+* [x] **Task 2.1:** Buat komponen `Button` (Variant: Primary, Outline, Text) di `src/components/ui/Button.tsx`.
+* [x] **Task 2.2:** Buat komponen `Input`, `Textarea`, dan `Select` untuk form (pilihan layanannya diubah menjadi khusus web).
+* [x] **Task 2.3:** Buat layout shell utama: `Navbar` (logo, link, tombol CTA) dan `Footer`.
 
 ## Fase 3: Pengembangan Halaman (Estimasi: 3-4 Hari)
 Bagi pengerjaan ke dalam section komponen di `src/components/sections/`.

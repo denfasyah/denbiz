@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope, Plus_Jakarta_Sans, Work_Sans } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -33,9 +35,11 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth">
       <body
-        className={`${manrope.variable} ${plusJakarta.variable} ${workSans.variable} antialiased selection:bg-[#f5ca03]/30`}
+        className={`${manrope.variable} ${plusJakarta.variable} ${workSans.variable} antialiased selection:bg-[#f5ca03]/30 bg-background`}
       >
-        {children}
+        <Navbar />
+        <main className="min-h-screen pt-24">{children}</main>
+        <Footer />
       </body>
     </html>
   );
