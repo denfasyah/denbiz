@@ -9,10 +9,11 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Beranda", href: "#" },
-  { name: "Layanan", href: "#services" },
+  { name: "Tentang", href: "#tentang" },
+  { name: "Layanan", href: "#layanan" },
   { name: "Portofolio", href: "#portfolio" },
   { name: "Kontak", href: "#contact" },
-  { name: "About", href: "#about" },
+
 ];
 
 export function Navbar() {

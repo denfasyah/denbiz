@@ -23,7 +23,7 @@ export function HeroSection() {
         {/* ── Left: Copy ── */}
         <div className="order-2 lg:order-1 flex flex-col justify-center">
           {/* Trust badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold md:mt-15 mb-2 backdrop-blur-sm">
+          <div className="w-fit inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold md:mt-15 mb-2 backdrop-blur-sm">
             <ShieldCheck className="w-3.5 h-3.5 text-tertiary" />
             DIPERCAYA 100+ KLIEN SELURUH INDONESIA
           </div>
