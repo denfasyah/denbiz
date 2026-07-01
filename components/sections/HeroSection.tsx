@@ -19,16 +19,16 @@ export function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-16">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center py-6 lg:py-16">
         {/* ── Left: Copy ── */}
-        <div>
+        <div className="order-2 lg:order-1 flex flex-col justify-center">
           {/* Trust badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold md:mt-15 mb-2 backdrop-blur-sm">
             <ShieldCheck className="w-3.5 h-3.5 text-tertiary" />
             DIPERCAYA 100+ KLIEN SELURUH INDONESIA
           </div>
 
-          <h1 className="font-display font-extrabold text-5xl md:text-5xl leading-[1.1] tracking-tight text-white mb-6">
+          <h1 className="font-display font-extrabold text-[2rem] sm:text-4xl md:text-5xl leading-[1.1] tracking-tight text-white mb-4 lg:mb-6">
             Jasa Pembuatan{" "}
             <span className="text-tertiary italic">Website</span>{" "}
             &amp;{" "}
@@ -39,7 +39,7 @@ export function HeroSection() {
             Professional
           </h1>
 
-          <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl">
+          <p className="text-white/70 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 lg:mb-10 max-w-xl">
             Kembangkan bisnis Anda di era digital bersama DenBiz. Dari landing
             page, company profile, toko online, hingga sistem informasi kustom
             — kami hadir dengan teknologi terbaru.
@@ -65,7 +65,7 @@ export function HeroSection() {
           </div>
 
           {/* Stats */}
-          <div className="mt-12 flex items-center gap-0 divide-x divide-white/20">
+          <div className="mt-6 lg:mt-12 flex items-center gap-0 divide-x divide-white/20">
             {[
               { value: "4.9/5", label: "Customer Rating" },
               { value: "300+", label: "Projects Completed" },
@@ -85,8 +85,8 @@ export function HeroSection() {
         </div>
 
         {/* ── Right: Floating illustration ── */}
-        <div className="relative hidden lg:block">
-          <div className="relative z-10 animate-floating">
+        <div className="order-1 lg:order-2 relative flex justify-center w-full max-w-[200px] sm:max-w-[240px] md:max-w-sm lg:max-w-none mx-auto lg:block mt-10 md:mt-0">
+          <div className="relative z-10 animate-floating w-full">
             {/* Main illustration */}
             <div className="rounded-3xl overflow-hidden  p-2 flex items-center justify-center">
               <Image 
@@ -101,30 +101,30 @@ export function HeroSection() {
 
             {/* Floating badges */}
             <div
-              className="absolute top-10 -right-6 bg-white py-2.5 px-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 animate-bounce"
+              className="absolute top-10 -right-4 md:top-10 md:-right-6 scale-[0.65] md:scale-100 origin-top-right bg-white py-2.5 px-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 animate-bounce"
               style={{ animationDuration: "4s" }}
             >
               <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
                 <Star className="w-3.5 h-3.5 text-primary fill-primary" />
               </div>
-              <span className="font-semibold text-xs text-on-surface">Desain Eksklusif</span>
+              <span className="font-semibold text-xs text-on-surface whitespace-nowrap">Desain Eksklusif</span>
             </div>
 
             <div
-              className="absolute top-1/2 -left-10 bg-white py-2.5 px-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 animate-floating"
+              className="absolute top-1/2 -left-8 md:-left-10 scale-[0.65] md:scale-100 origin-left bg-white py-2.5 px-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 animate-floating"
               style={{ animationDelay: "1s" }}
             >
               <div className="w-7 h-7 rounded-full bg-tertiary/20 flex items-center justify-center">
                 <Zap className="w-3.5 h-3.5 text-tertiary fill-tertiary" />
               </div>
-              <span className="font-semibold text-xs text-on-surface">Pengerjaan Cepat</span>
+              <span className="font-semibold text-xs text-on-surface whitespace-nowrap">Pengerjaan Cepat</span>
             </div>
 
-            <div className="absolute bottom-6 right-12 bg-white py-2.5 px-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 animate-pulse">
+            <div className="absolute -bottom-4 right-0 md:bottom-6 md:right-12 scale-[0.65] md:scale-100 origin-bottom-right bg-white py-2.5 px-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-2.5 animate-pulse">
               <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
                 <ShieldCheck className="w-3.5 h-3.5 text-green-600" />
               </div>
-              <span className="font-semibold text-xs text-on-surface">Terpercaya</span>
+              <span className="font-semibold text-xs text-on-surface whitespace-nowrap">Terpercaya</span>
             </div>
           </div>
         </div>
