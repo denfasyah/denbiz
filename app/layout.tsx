@@ -25,6 +25,9 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   title: "DenBiz - Web Development Specialist",
   description: "Jasa pembuatan website profesional, performa tinggi, dan konversi maksimal.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

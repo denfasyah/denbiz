@@ -8,16 +8,17 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Beranda", href: "#" },
-  { name: "Tentang", href: "#tentang" },
-  { name: "Layanan", href: "#layanan" },
-  { name: "Portofolio", href: "#portfolio" },
-  { name: "Kontak", href: "#contact" },
-
+  { name: "Beranda", href: "/" },
+  { name: "Tentang", href: "/tentang" },
+  { name: "Layanan", href: "/layanan" },
+  { name: "Portofolio", href: "/portofolio" },
+  { name: "Kontak", href: "/kontak" },
 ];
 
+import { usePathname } from "next/navigation";
+
 export function Navbar() {
-  const [active, setActive] = useState("Beranda");
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -56,10 +57,9 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              onClick={() => setActive(link.name)}
               className={cn(
                 "px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200",
-                active === link.name
+                pathname === link.href
                   ? "bg-primary text-white shadow-sm"
                   : "text-on-surface-variant hover:text-primary hover:bg-primary/5"
               )}
@@ -95,15 +95,12 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              onClick={() => {
-                setActive(link.name);
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => setMobileMenuOpen(false)}
               className={cn(
-                "px-4 py-3 rounded-xl text-sm font-medium",
-                active === link.name
-                  ? "bg-primary text-white shadow-sm"
-                  : "text-on-surface-variant hover:bg-primary/5 hover:text-primary"
+                "block px-4 py-3 rounded-2xl text-base font-semibold transition-colors",
+                pathname === link.href
+                  ? "bg-primary text-white"
+                  : "text-on-surface hover:bg-surface-container"
               )}
             >
               {link.name}

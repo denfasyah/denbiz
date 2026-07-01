@@ -17,43 +17,36 @@ Dokumen ini berisi panduan tahap demi tahap untuk membangun website profil agens
 * [x] **Task 2.2:** Buat komponen `Input`, `Textarea`, dan `Select` untuk form (pilihan layanannya diubah menjadi khusus web).
 * [x] **Task 2.3:** Buat layout shell utama: `Navbar` (logo, link, tombol CTA) dan `Footer`.
 
-## Fase 3: Pengembangan Halaman (Estimasi: 3-4 Hari)
-Bagi pengerjaan ke dalam section komponen di `src/components/sections/`.
+## Fase 3: Pengembangan Halaman Utama (Selesai)
+* [x] **Task 3.1: Hero Section** - Selesai.
+* [x] **Task 3.2: About Section** - Selesai (Responsive grid).
+* [x] **Task 3.3: Services Section** - Selesai.
+* [x] **Task 3.4: Portfolio Section** - Selesai.
+* [x] **Task 3.5: Testimonials Section** - Selesai.
+* [x] **Task 3.6: Pricing/Investasi Section** - Selesai.
+* [x] **Task 3.7: FAQ Section** - Selesai (Accordion style).
+* [x] **Task 3.8: Contact Section** - Selesai.
 
-* [ ] **Task 3.1: Hero Section**
-  * Teks judul disesuaikan ("Jasa Pembuatan Website Profesional").
-  * CTA buttons & statistik performa web.
-* [ ] **Task 3.2: Services Section (Khusus Web)**
-  * Kartu 1: Landing Page & Company Profile
-  * Kartu 2: Web Application & Sistem Informasi
-  * Kartu 3: E-Commerce & Custom Integration
-* [ ] **Task 3.3: Portfolio Section**
-  * Bento grid layout menampilkan tangkapan layar website responsif (Desktop & Mobile view mockup).
-* [ ] **Task 3.4: Testimonials Section**
-  * Grid kartu testimoni klien pembuatan web.
-* [ ] **Task 3.5: Pricing Section**
-  * 3 Kolom kartu harga web (Starter, Business, Custom/Enterprise).
-* [ ] **Task 3.6: Contact Section**
-  * Form kontak dengan pilihan *Select Services*: (Landing Page, Company Profile, Web App, E-Commerce, Maintenance).
+## Fase 4: Migrasi Multi-Page & Skeleton Loaders (Baru)
+Karena website akan dikembangkan menjadi multi-page (beberapa halaman), kita perlu memisahkan beberapa konten dari satu halaman panjang (Single Page) menjadi arsitektur halaman Next.js:
+* [x] **Task 4.1:** Buat struktur routing App Router: `/tentang`, `/layanan`, `/portofolio`, `/kontak`.
+* [x] **Task 4.2:** Pindahkan komponen section yang sesuai ke halamannya masing-masing. (Contoh: `app/portofolio/page.tsx`).
+* [x] **Task 4.3:** Buat `loading.tsx` dengan kerangka UI (Skeleton Loaders) untuk tiap rute halaman agar transisi terasa cepat.
+* [x] **Task 4.4:** Sesuaikan navigasi `Navbar` agar menggunakan `<Link href="/halaman">` bukan ID anchor (`#halaman`).
 
-## Fase 4: Integrasi & Fungsionalitas Lanjutan (Estimasi: 2 Hari)
-* [ ] **Task 4.1: Smooth Scrolling & Active State Nav**
-  * Navbar mendeteksi posisi scroll section.
-* [ ] **Task 4.2: Animasi Scroll Reveal**
-  * Bungkus komponen section dengan tag Framer Motion (`<motion.div>`) (fade-in up).
-* [ ] **Task 4.3: Floating WhatsApp Button**
-  * FAB statis di pojok kanan bawah.
-* [ ] **Task 4.4: Fungsionalitas Form Kontak**
-  * Endpoint API di `src/app/api/contact/route.ts` menggunakan Resend API.
+## Fase 5: Integrasi & Fungsionalitas Lanjutan (Estimasi: 1-2 Hari)
+* [x] **Task 5.1: Smooth Scrolling & Active State Nav** - Selesai. Active state navigasi berdasarkan *pathname* telah ditambahkan di Navbar.
+* [ ] **Task 5.2: Animasi Scroll Reveal** - Bungkus komponen dengan Framer Motion.
+* [x] **Task 5.3: Floating WhatsApp Button** - Selesai.
+* [x] **Task 5.4: Fungsionalitas Form Kontak** - Selesai. Endpoint API kontak dibuat di `app/api/contact/route.ts`.
 
-## Fase 5: QA & Optimasi Performa (Estimasi: 1-2 Hari)
-* [ ] **Task 5.1:** Tes responsivitas menyeluruh (Chrome DevTools, HP fisik).
-* [ ] **Task 5.2:** Audit Lighthouse. Targetkan metrik Performance, Accessibility, Best Practices, dan SEO harus 95+.
-* [ ] **Task 5.3:** Meta Tags SEO di `layout.tsx` (Title: DenBiz - Web Development Specialist).
-* [ ] **Task 5.4:** Optimasi Gambar (ubah semua image tag menggunakan `next/image` dengan format WebP/AVIF).
+## Fase 6: QA & Optimasi Performa (Estimasi: 1-2 Hari)
+* [ ] **Task 6.1:** Tes responsivitas menyeluruh.
+* [ ] **Task 6.2:** Audit Lighthouse (Target 95+).
+* [ ] **Task 6.3:** Meta Tags SEO per halaman (Dynamic Metadata).
 
-## Fase 6: Deployment (Estimasi: 1 Hari)
-* [ ] **Task 6.1:** Push kode ke GitHub.
-* [ ] **Task 6.2:** Import ke Vercel.
-* [ ] **Task 6.3:** Set up Environment Variables di Vercel (Email API Key).
-* [ ] **Task 6.4:** Deploy & konfigurasi Custom Domain.
+## Fase 7: Deployment (Estimasi: 1 Hari)
+* [ ] **Task 7.1:** Push kode ke GitHub.
+* [ ] **Task 7.2:** Import ke Vercel.
+* [ ] **Task 7.3:** Konfigurasi Environment Variables.
+* [ ] **Task 7.4:** Deploy & konfigurasi Domain (misal: denbiz.com).

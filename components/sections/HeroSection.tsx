@@ -55,8 +55,8 @@ export function HeroSection() {
               <MessageCircle className="w-4 h-4" />
               Konsultasi via WhatsApp
             </a>
-            <Link
-              href="#portfolio"
+            <Link 
+              href="/portofolio"
               className="inline-flex items-center gap-2 border border-white/30 text-white bg-white/10 backdrop-blur-sm px-7 py-3.5 rounded-xl font-semibold text-sm hover:bg-white/20 transition-all active:scale-95"
             >
               Lihat Portofolio

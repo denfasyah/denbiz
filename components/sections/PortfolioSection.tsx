@@ -151,7 +151,7 @@ export function PortfolioSection() {
               <span className="text-primary italic">Kami Kerjakan</span>
             </h2>
           </div>
-          <Link href="#" className="text-primary font-semibold text-sm flex items-center gap-2 hover:gap-4 transition-all group">
+          <Link href="/portofolio" className="text-primary font-semibold text-sm flex items-center gap-2 hover:gap-4 transition-all group">
             Lihat Semua Proyek
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
@@ -236,7 +236,7 @@ export function PortfolioSection() {
                 <ChevronRight className="w-5 h-5" />
               </button>
               <a
-                href="#"
+                href="/portofolio"
                 className="ml-2 inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all"
               >
                 View Case Study <ExternalLink className="w-4 h-4" />

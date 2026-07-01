@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { CheckCircle2, Target, Lightbulb, Users } from "lucide-react";
 
 export function AboutSection() {
@@ -66,9 +67,9 @@ export function AboutSection() {
               ))}
             </ul>
 
-            <a href="#layanan" className="inline-block bg-primary text-white font-semibold px-8 py-4 rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30">
+            <Link href="/layanan" className="inline-block bg-primary text-white font-semibold px-8 py-4 rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30">
               Pelajari Layanan Kami
-            </a>
+            </Link>
           </div>
 
         </div>
