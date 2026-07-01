@@ -38,7 +38,7 @@ export default function RootLayout({
         className={`${manrope.variable} ${plusJakarta.variable} ${workSans.variable} antialiased selection:bg-[#f5ca03]/30 bg-background`}
       >
         <Navbar />
-        <main className="min-h-screen pt-24">{children}</main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

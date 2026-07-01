@@ -41,12 +41,12 @@ export function Navbar() {
           <Image
             src="/logo.png"
             alt="DenBiz Logo"
-            width={90}
-            height={90}
-            className="shrink-0 -mr-5"
+            width={40}
+            height={40}
+            className="shrink-0"
             priority
           />
-          <span className="font-display font-bold text-[22px] text-primary tracking-tight leading-none">DenBizz</span>
+          <span className="font-display font-bold text-[22px] text-primary tracking-tight ml-3 leading-none">DenBizz</span>
         </Link>
 
         {/* Desktop Nav */}

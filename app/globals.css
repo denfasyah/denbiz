@@ -16,6 +16,7 @@
   --color-primary-container: #dce1ff;
   --color-surface-container-low: #f1f3ff;
   --color-surface-container: #e9edff;
+  --color-surface-container-high: #e1e8fd;
   --color-inverse-surface: #293040;
 
   --font-display: var(--font-manrope), sans-serif;
@@ -32,4 +33,14 @@ body {
 
 .soft-shadow {
   box-shadow: 0 20px 40px -15px rgba(27, 53, 138, 0.08);
+}
+
+@keyframes floating {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-floating {
+  animation: floating 3s ease-in-out infinite;
 }

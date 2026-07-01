@@ -1,10 +1,21 @@
+import { HeroSection } from "@/components/sections/HeroSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
+import { PortfolioSection } from "@/components/sections/PortfolioSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { PricingSection } from "@/components/sections/PricingSection";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center p-8">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold font-display text-primary mb-4">DenBiz Web Agency</h1>
-        <p className="text-on-surface-variant font-body">P.</p>
-      </div>
-    </main>
+    <>
+      <HeroSection />
+      <ServicesSection />
+      <PortfolioSection />
+      <TestimonialsSection />
+      <PricingSection />
+      <ContactSection />
+      <WhatsAppButton />
+    </>
   );
 }
