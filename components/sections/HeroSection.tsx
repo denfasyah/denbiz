@@ -25,7 +25,7 @@ export function HeroSection() {
           {/* Trust badge */}
           <div className="w-fit inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold md:mt-15 mb-2 backdrop-blur-sm">
             <ShieldCheck className="w-3.5 h-3.5 text-tertiary" />
-            DIPERCAYA 100+ KLIEN SELURUH INDONESIA
+            {/* DIPERCAYA 100+ KLIEN SELURUH INDONESIA */} KOMITMEN KUALITAS & KEPUASAN KLIEN
           </div>
 
           <h1 className="font-display font-extrabold text-[2rem] sm:text-4xl md:text-5xl leading-[1.1] tracking-tight text-white mb-4 lg:mb-6">
@@ -67,8 +67,8 @@ export function HeroSection() {
           {/* Stats */}
           <div className="mt-6 lg:mt-12 flex items-center gap-0 divide-x divide-white/20">
             {[
-              { value: "4.9/5", label: "Customer Rating" },
-              { value: "300+", label: "Projects Completed" },
+              { value: "100%", label: "Kepuasan Klien" },
+              { value: "Detail", label: "Fokus pada Detail & Strategi" },
               { value: "24/7", label: "Support Readiness" },
             ].map((stat, i) => (
               <div

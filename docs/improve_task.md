@@ -2,57 +2,71 @@
 
 Sebagai *Technical Lead*, *Full Stack Developer*, dan *Designer*, saya telah melakukan audit menyeluruh terhadap arsitektur, UI/UX, dan flow bisnis pada sistem DenBiz. 
 
-Berikut adalah **Master Plan Improvements** yang wajib diimplementasikan untuk menjadikan website ini 100% *Client-Ready*, berstandar industri tinggi (Enterprise-Grade), dan memiliki *Conversion Rate* yang maksimal.
+Berdasarkan analisa, tujuan utama website ini bukan sekadar portofolio biasa, melainkan **Mesin Pencari Klien (Lead Generator)**. Klien tidak terlalu peduli dengan sejarah kita, mereka peduli pada *bagaimana bisnis mereka bisa berkembang, menghasilkan lebih banyak uang, dan terlihat lebih kredibel* berkat jasa kita.
+
+Berikut adalah **Master Plan Improvements** dari awal hingga akhir untuk menjadikan website ini berstandar industri tinggi dan memiliki *Conversion Rate* yang maksimal.
 
 ---
 
-## 1. Global Layout & UX (Pengalaman Pengguna)
-Kekurangan saat ini: Tombol bantuan (WA) hanya ada di Beranda, tidak ada transisi *loading* visual saat pindah halaman, favicon default Vercel, dan belum ada interaksi mikro yang mewah.
+## FASE 1: Re-Strategi Konten & UX (Fokus Konversi)
+
+Kekurangan saat ini: Konten terlalu fokus pada "siapa kita" daripada "apa keuntungan untuk klien".
 **Tugas Peningkatan:**
-- [x] **Global Floating Action Button (FAB)**: Pindahkan komponen tombol WhatsApp Melayang (Floating WA) ke `layout.tsx` agar selalu muncul menempel di pojok kanan bawah pada **seluruh halaman**, bukan hanya di Home.
-- [x] **Top Progress Bar**: Tambahkan pustaka `next-nprogress-bar` untuk menampilkan garis *loading* di bagian atas layar saat pengguna berpindah halaman, menutupi jeda sebelum *Skeleton* muncul.
-- [x] **Global Scroll Animation (Framer Motion)**: Implementasikan *HOC (Higher Order Component)* pembungkus seperti `<FadeIn>` agar setiap *section* yang muncul di layar otomatis masuk dengan efek *fade-in-up* yang elegan saat di-*scroll*.
-- [x] **Favicon & Brand Identity**: Menghapus logo default *framework* dan mengintegrasikan ikon kustom DenBiz secara dinamis untuk UI *browser* dan perangkat *mobile*.
+- [ ] **Home Page - USP (Mengapa Memilih Kami)**: 
+    - Hapus bagian "Sejarah/Tentang Kami".
+    - Buat *section* baru berjudul **"Mengapa memilih DenBiz sebagai partner digital?"**.
+    - Gunakan layout *Grid 2x2 Card* elegan (seperti referensi desain). Contoh isi kartu:
+      1. **Diskusi Tanpa Jargon**: Komunikasi teknis dengan bahasa manusia.
+      2. **Komitmen Lini Masa**: On-time delivery.
+      3. **Standar SEO & Kecepatan**: Kode dioptimasi untuk ranking Google.
+      4. **Skalabilitas & Keamanan**: Sistem siap berkembang.
+- [ ] **Paket Investasi Digital (Penggabungan Layanan & Harga)**:
+    - Hapus halaman terpisah untuk Layanan dan Harga. Satukan menjadi satu *section* kuat.
+    - Pada halaman Home (Beranda), tampilkan **hanya beberapa paket unggulan** (misal 3 paket utama).
+    - Di bawah daftar paket di Home, berikan link **"Lihat semua paket harga ->"** yang mengarah ke halaman lengkap `/layanan`.
+    - **Struktur Kartu Paket**:
+        - Nama Paket (Contoh: *Landing Page UMKM Executive - 1 Halaman*)
+        - Harga Jelas (Contoh: *Rp 1.800.000*)
+        - Inklusi Dasar (Contoh: *Termasuk Domain .com & Server Hosting Cloud*)
+        - Daftar Benefit (Contoh: *Copywriting persuasif, Optimasi SEO, Integrasi Google Maps*)
+        - **Tombol CTA Spesifik**: Contoh `[Pesan Landing Page]` atau `[Konsultasi Web Korporat]`.
 
 ---
 
-## 2. Halaman Kontak (`/kontak`)
-Kekurangan saat ini: Halaman ini sekadar replika *Contact Section* di Beranda. Form belum interaktif, tidak ada *feedback* saat tombol kirim ditekan, dan kurangnya informasi kontak alternatif.
+## FASE 2: Clean Code & Arsitektur Data (Mudah Dimaintenance)
+
+Kekurangan saat ini: Data portofolio, harga, dan layanan tersebar di berbagai file komponen (TSX) sehingga sulit diperbarui.
 **Tugas Peningkatan:**
-- [x] **SweetAlert2 (SWAL) Integration**: Pasang `sweetalert2` untuk memberikan animasi *pop-up* centang hijau (Success) atau silang merah (Error) setelah *user* melakukan klik tombol "Kirim Pesan" pada form.
-- [x] **Active Form Handling**: Sambungkan komponen form (React Hook Form / State) dengan Endpoint API `/api/contact` yang sudah dibuat agar benar-benar memproses data.
-- [x] **Opsi Kontak Langsung (Direct Channels)**: Tambahkan kartu (cards) elegan di sebelah form yang berisi tombol langsung menuju WhatsApp API (`wa.me/...`), Email langsung (`mailto:...`), dan integrasi Google Maps interaktif (Iframe) untuk menunjukkan lokasi fisik *agency*.
+- [ ] **Pemisahan Data Layer (`lib/data.ts`)**: Buat file khusus (contoh: `lib/data.ts`) untuk menampung semua teks, daftar paket investasi (Lengkap dengan harga & benefit), FAQ, testimonial, dan portofolio dalam bentuk Object/JSON statis.
+- [ ] **Dynamic Component Mapping**: Ubah komponen UI (seperti kartu harga di Home dan `/layanan`) agar me-*looping* (map) data dari file `data.ts`. Jika ke depan ada perubahan harga atau tambah paket (misal paket 3 halaman, 5 halaman), Anda cukup edit `data.ts` tanpa mengotak-atik tampilan/TSX.
 
 ---
 
-## 3. Halaman Portofolio (`/portofolio`)
-Kekurangan saat ini: Tampilan hanya terbatas pada 1 atau 2 contoh, susunan tidak rapi untuk banyak data, dan ada tombol "Lihat Semua" yang tidak logis karena sudah berada di halaman Portofolio.
-**Tugas Peningkatan:**
-- [x] **Bento/Masonry Grid Layout**: Rombak tampilan menjadi sistem Grid 3 kolom (Desktop) yang rapi.
-- [x] **Rich Mock Data**: Suntikkan struktur data (JSON statis) berisi 8-9 proyek *dummy* lengkap dengan Kategori, Nama Klien, Teknologi yang dipakai, dan Cuplikan gambar.
-- [x] **Filter Kategori (Tabs)**: Tambahkan *Interactive Tabs* di atas grid (Contoh: "Semua", "Landing Page", "Sistem Informasi", "E-Commerce"). Saat diklik, grid proyek akan memfilter dengan animasi halus.
-- [x] **Pagination / Load More**: Tambahkan tombol "Muat Lebih Banyak" (Load More) di bawah grid untuk membatasi tampilan awal agar halaman tidak terlalu berat (*Performance Optimization*).
+## FASE 3: UI/UX & Global Layout (Desain Mewah & Cepat)
+
+**Status Progress Saat Ini:**
+- [x] **Global Floating Action Button (FAB)**: WhatsApp Melayang aktif di seluruh halaman.
+- [x] **Top Progress Bar**: Garis *loading* saat berpindah halaman sudah diimplementasikan (next-nprogress-bar).
+- [x] **Global Scroll Animation (Framer Motion)**: Elemen masuk dengan elegan (fade-in) saat halaman di-scroll.
+**Tugas Peningkatan Lanjutan:**
+- [ ] **Micro-Interactions & Hover Effects**: Tambahkan efek *glow*, transisi warna, atau elevasi kartu (3D hover effect) pada kartu Paket Investasi dan USP agar terasa sangat premium.
 
 ---
 
-## 4. Halaman Layanan (`/layanan`)
-Kekurangan saat ini: Tombol "Pelajari Selengkapnya" belum responsif/fungsional. Paket harga statis, dan juga masih kurang bagus.
-**Tugas Peningkatan:**
-- [x] **Interactive Service Detail**: Saat tombol "Pelajari Selengkapnya" diklik, halaman tidak boleh diam. Ia harus membuka sebuah **Modal (Pop-up lebar)** atau menampilkan *Accordion* rincian proses (*Discovery - UI/UX - Dev - QA - Deploy*).
-- [x] **Smart Pricing CTA**: Ubah *link* pada tabel Harga. Ketika klien mengklik "Pilih Paket Business", *website* akan mengarahkan mereka ke `/kontak?paket=business` dan **Otomatis memilih opsi Dropdown** di form kontak sesuai paket tersebut, menghilangkan kerepotan *user* mengetik ulang.
+## FASE 4: Fungsionalitas Halaman Pendukung
+
+**Halaman Kontak (`/kontak`)**
+- [x] **SweetAlert2 (SWAL)**: Pop-up notifikasi berhasil/gagal setelah mengirim pesan.
+- [x] **Opsi Kontak Langsung**: Tombol WA, Email, dan Integrasi Peta.
+- [ ] **Smart Form Routing**: Jika klien mengklik CTA "Pesan Landing Page" pada paket Rp 1.800.000, URL akan memuat `/kontak?paket=landing-page` dan *dropdown* form kontak otomatis memilih opsi tersebut.
+
+**Halaman Portofolio (`/portofolio`)**
+- [x] **Bento/Masonry Grid Layout**: Tampilan Grid profesional.
+- [x] **Filter Kategori (Tabs)**: Interaksi tab "Semua", "Web App", "Landing Page".
 
 ---
 
-## 5. Halaman Tentang Kami (`/tentang`)
-Kekurangan saat ini: Konten terlalu tipis (copy-paste dari Home). Agensi perlu profil mendalam untuk membangun kepercayaan (*Trust/Credibility*).
-**Tugas Peningkatan:**
-- [x] **Sejarah & Visi (Visual Storytelling)**: Rombak menjadi layout asimetris dengan gambar tim/kantor (menggunakan placeholder profesional).
-- [x] **Nilai Perusahaan (Core Values)**: Buat kartu-kartu interaktif bergaya 3D *hover* (Inovasi, Transparansi, Kualitas).
-- [x] **Bagian Tim (Meet The Team)**: Tambahkan grid sederhana berisi profil 3-4 figur penting (Founder, Tech Lead, UI Designer) untuk memberikan sentuhan "manusia" pada bisnis.
-
----
-
-## 6. SEO Dinamis & Meta Tags (Dynamic Metadata)
-Kekurangan saat ini: Ketika URL di-share ke WhatsApp, judulnya selalu sama "DenBiz - Web Development".
-**Tugas Peningkatan:**
-- [x] **Page-Specific Metadata**: Sisipkan kode `export const generateMetadata()` di setiap *route* halaman agar *Title* browser berubah sesuai halamannya (Contoh: "Portofolio Proyek - DenBiz" atau "Hubungi Kami - DenBiz").
+## Saran Eksekutif Tambahan (Tech Lead Suggestions):
+1. **Kecepatan Adalah Segalanya (Performance)**: Gunakan format `.webp` untuk semua gambar portofolio. Website agensi pembuat website harus memiliki skor *Lighthouse* 90+.
+2. **Kesan Eksklusif (Scarcity & Urgency)**: Tambahkan elemen *copywriting* seperti *"Slot pengerjaan untuk bulan ini tersisa 2 klien lagi"* di atas *section* harga untuk memancing konversi cepat.
+3. **FAQ yang Menghapus Keraguan**: Pada halaman paket/layanan lengkap, tambahkan FAQ singkat (Misal: "Apakah ada biaya tahunan?", "Berapa lama proses pembuatan?"). Ini sangat ampuh menepis keraguan klien sebelum mereka menghubungi Anda.
