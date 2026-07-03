@@ -13,8 +13,11 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import Link from "next/link";
 import { FadeIn } from "@/components/ui/FadeIn";
+
+// Ganti dengan nomor WhatsApp bisnis kamu (format: kode negara tanpa "+" atau "0")
+// Contoh nomor 0812-3456-7890 -> "6281234567890"
+const WHATSAPP_NUMBER = "6281234567890";
 
 type PlanFeature = { text: string; included: boolean };
 
@@ -356,7 +359,19 @@ const services: ServiceCategory[] = [
   },
 ];
 
-function PlanCard({ plan, serviceSlug }: { plan: Plan; serviceSlug: string }) {
+// Bangun URL wa.me dengan pesan template sesuai layanan & paket yang dipilih
+function buildWhatsAppLink(serviceTitle: string, plan: Plan) {
+  const message = `Halo DenBizz, saya tertarik dengan layanan *${serviceTitle}* paket *${plan.name}* (${plan.tier}) seharga ${plan.price} ${plan.unit}. Bisa dibantu info lebih lanjut?`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+function PlanCard({
+  plan,
+  serviceTitle,
+}: {
+  plan: Plan;
+  serviceTitle: string;
+}) {
   return (
     <div
       className={[
@@ -431,8 +446,10 @@ function PlanCard({ plan, serviceSlug }: { plan: Plan; serviceSlug: string }) {
           </li>
         ))}
       </ul>
-      <Link
-        href={`/kontak?layanan=${serviceSlug}&paket=${plan.name.toLowerCase()}`}
+      <a
+        href={buildWhatsAppLink(serviceTitle, plan)}
+        target="_blank"
+        rel="noopener noreferrer"
         className={[
           "w-full py-3.5 font-semibold text-sm rounded-xl text-center block transition-all",
           plan.featured
@@ -443,7 +460,7 @@ function PlanCard({ plan, serviceSlug }: { plan: Plan; serviceSlug: string }) {
         ].join(" ")}
       >
         {plan.cta}
-      </Link>
+      </a>
     </div>
   );
 }
@@ -533,7 +550,7 @@ export function ServicesSection() {
         {/* Desktop grid */}
         <div className="hidden md:grid grid-cols-3 gap-8 items-center">
           {active.plans.map((plan) => (
-            <PlanCard key={plan.name} plan={plan} serviceSlug={active.slug} />
+            <PlanCard key={plan.name} plan={plan} serviceTitle={active.title} />
           ))}
         </div>
 
@@ -546,7 +563,7 @@ export function ServicesSection() {
           >
             {active.plans.map((plan) => (
               <div key={plan.name} className="min-w-[85%] snap-center">
-                <PlanCard plan={plan} serviceSlug={active.slug} />
+                <PlanCard plan={plan} serviceTitle={active.title} />
               </div>
             ))}
           </div>
