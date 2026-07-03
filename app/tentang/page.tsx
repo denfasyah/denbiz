@@ -1,5 +1,11 @@
-﻿import { PageHeader } from "@/components/sections/PageHeader";
+import { Metadata } from "next";
+import { PageHeader } from "@/components/sections/PageHeader";
 import { AboutSection } from "@/components/sections/AboutSection";
+
+export const metadata: Metadata = {
+  title: "Tentang Kami - DenBiz",
+  description: "Pelajari sejarah, visi, dan tim profesional di balik layanan DenBiz.",
+};
 
 export default function TentangPage() {
   return (

@@ -1,4 +1,5 @@
 import { Check, X, BadgeCheck } from "lucide-react";
+import Link from "next/link";
 
 const plans = [
   {
@@ -16,7 +17,7 @@ const plans = [
     ],
     cta: "Pilih Paket",
     ctaClass:
-      "w-full py-4 border border-outline-variant text-on-surface font-semibold text-sm rounded-xl hover:bg-on-surface hover:text-white transition-all",
+      "w-full py-4 border border-outline-variant text-on-surface font-semibold text-sm rounded-xl hover:bg-on-surface hover:text-white transition-all text-center block",
   },
   {
     tier: "Growth",
@@ -33,7 +34,7 @@ const plans = [
     ],
     cta: "Pilih Paket Sekarang",
     ctaClass:
-      "w-full py-4 bg-tertiary text-on-tertiary font-semibold text-sm rounded-xl hover:brightness-105 transition-all shadow-md",
+      "w-full py-4 bg-tertiary text-on-tertiary font-semibold text-sm rounded-xl hover:brightness-105 transition-all shadow-md text-center block",
   },
   {
     tier: "Scale",
@@ -50,7 +51,7 @@ const plans = [
     ],
     cta: "Pilih Paket",
     ctaClass:
-      "w-full py-4 bg-tertiary text-on-tertiary font-semibold text-sm rounded-xl hover:brightness-110 transition-all",
+      "w-full py-4 bg-tertiary text-on-tertiary font-semibold text-sm rounded-xl hover:brightness-110 transition-all text-center block",
   },
 ];
 
@@ -145,7 +146,9 @@ export function PricingSection() {
                   </li>
                 ))}
               </ul>
-              <button className={plan.ctaClass}>{plan.cta}</button>
+              <Link href={`/kontak?paket=${plan.name.toLowerCase()}`} className={plan.ctaClass}>
+                {plan.cta}
+              </Link>
             </div>
           ))}
         </div>

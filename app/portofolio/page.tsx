@@ -1,6 +1,12 @@
-﻿import { PageHeader } from "@/components/sections/PageHeader";
-import { PortfolioSection } from "@/components/sections/PortfolioSection";
+import { Metadata } from "next";
+import { PageHeader } from "@/components/sections/PageHeader";
+import { PortfolioGridSection } from "@/components/sections/PortfolioGridSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+
+export const metadata: Metadata = {
+  title: "Portofolio Proyek - DenBiz",
+  description: "Lihat portofolio dan hasil karya terbaik DenBiz dalam pengembangan website.",
+};
 
 export default function PortofolioPage() {
   return (
@@ -14,7 +20,7 @@ export default function PortofolioPage() {
           { label: "Portofolio" }
         ]}
       />
-      <PortfolioSection />
+      <PortfolioGridSection />
       <TestimonialsSection />
     </>
   );
