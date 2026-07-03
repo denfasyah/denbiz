@@ -1,248 +1,328 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, ArrowUpRight, ExternalLink } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-const projects = [
+type Project = {
+  id: number;
+  title: string;
+  subtitle: string;
+  category: string;
+  desc: string;
+  tech: string[];
+  accentColor: string;
+  mockupType: "dashboard" | "ecommerce" | "landing" | "profile";
+  slug: string;
+};
+
+const projects: Project[] = [
   {
     id: 1,
-    title: "Financier ERP Dashboard",
-    category: "Enterprise System",
+    title: "Financier ERP",
+    subtitle: "Enterprise Dashboard System",
+    category: "Sistem Informasi",
     desc: "Sistem manajemen sumber daya perusahaan terintegrasi untuk manufaktur skala besar dengan fitur reporting real-time.",
     tech: ["Next.js", "TypeScript", "PostgreSQL"],
     accentColor: "#f5ca03",
     mockupType: "dashboard",
+    slug: "financier-erp",
   },
   {
     id: 2,
-    title: "EcoShop E-Commerce",
+    title: "EcoShop",
+    subtitle: "Website E-Commerce",
     category: "E-Commerce",
     desc: "Platform toko online modern untuk produk ramah lingkungan dengan integrasi Midtrans, manajemen stok, dan laporan penjualan.",
     tech: ["React", "Node.js", "MongoDB"],
     accentColor: "#ceee93",
     mockupType: "ecommerce",
+    slug: "ecoshop",
   },
   {
     id: 3,
-    title: "Modern Arch Landing",
+    title: "Modern Arch",
+    subtitle: "Landing Page Firma Arsitektur",
     category: "Landing Page",
     desc: "Landing page premium untuk firma arsitektur dengan desain minimalis, animasi scroll reveal, dan konversi rate tinggi.",
     tech: ["Next.js", "Framer Motion", "Tailwind"],
     accentColor: "#b6c4ff",
     mockupType: "landing",
+    slug: "modern-arch",
   },
   {
     id: 4,
-    title: "Klinik Sehat Company Profile",
+    title: "Klinik Sehat",
+    subtitle: "Website Company Profile",
     category: "Company Profile",
     desc: "Website company profile klinik modern dengan fitur booking appointment online, profil dokter, dan informasi layanan kesehatan.",
     tech: ["Next.js", "Prisma", "MySQL"],
     accentColor: "#a7f3d0",
     mockupType: "profile",
+    slug: "klinik-sehat",
   },
 ];
 
-function BrowserMockup({ type, accent }: { type: string; accent: string }) {
+function LaptopMockup({
+  type,
+  accent,
+  title,
+  subtitle,
+}: {
+  type: Project["mockupType"];
+  accent: string;
+  title: string;
+  subtitle: string;
+}) {
   return (
-    <div className="w-full rounded-2xl overflow-hidden border border-white/20 bg-white/10 backdrop-blur-sm shadow-2xl">
-      {/* Browser bar */}
-      <div className="flex items-center gap-1.5 px-4 py-3 bg-black/30 border-b border-white/10">
-        <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-        <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-        <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
-        <div className="ml-3 flex-1 h-4 rounded-full bg-white/10 flex items-center px-3">
-          <span className="text-white/40 text-[10px]">denbiz.agency/{type}</span>
-        </div>
+    <div
+      className="relative h-56 flex flex-col items-center justify-center overflow-hidden"
+      style={{
+        background: `linear-gradient(160deg, #101b34, #182a4d 60%, ${accent}25)`,
+      }}
+    >
+      {/* Title overlay */}
+      <div className="absolute top-5 left-0 right-0 text-center px-6 z-10">
+        <h4 className="text-white font-display font-bold text-lg leading-tight">
+          {title}
+        </h4>
+        <p className="text-white/50 text-[11px] mt-0.5">{subtitle}</p>
       </div>
-      {/* Content illustration */}
-      {type === "dashboard" && (
-        <div className="p-4 space-y-3 bg-[#1b2640]">
-          <div className="grid grid-cols-4 gap-2">
-            {[accent, "rgba(255,255,255,0.15)", "rgba(255,255,255,0.1)", "rgba(255,255,255,0.08)"].map((c, i) => (
-              <div key={i} className="h-14 rounded-xl" style={{ background: c }} />
-            ))}
+
+      {/* Ambient glow */}
+      <div
+        className="absolute w-40 h-40 rounded-full blur-3xl opacity-40"
+        style={{ background: accent }}
+      />
+
+      {/* Laptop screen */}
+      <div className="relative mt-10 w-[62%]">
+        <div className="rounded-t-md border-[3px] border-b-0 border-slate-700 bg-[#0c1424] overflow-hidden shadow-2xl">
+          {/* browser bar */}
+          <div className="flex items-center gap-1 px-2 py-1.5 bg-black/40">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
+            <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
           </div>
-          <div className="h-28 bg-white/5 rounded-xl flex items-end p-3 gap-1.5">
-            {[50, 75, 35, 90, 60, 80, 45, 95, 70].map((h, i) => (
-              <div key={i} className="flex-1 rounded-t" style={{ height: `${h}%`, background: i % 2 === 0 ? accent : "rgba(255,255,255,0.2)" }} />
-            ))}
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="h-8 bg-white/10 rounded-lg" />
-            <div className="h-8 rounded-lg" style={{ background: accent + "60" }} />
-          </div>
-        </div>
-      )}
-      {type === "ecommerce" && (
-        <div className="p-4 space-y-3 bg-[#1a1a2e]">
-          <div className="h-16 rounded-xl flex items-center px-4 gap-3" style={{ background: accent + "30" }}>
-            <div className="w-8 h-8 rounded-full" style={{ background: accent }} />
-            <div className="space-y-1 flex-1">
-              <div className="h-2 bg-white/30 rounded w-3/4" />
-              <div className="h-2 bg-white/15 rounded w-1/2" />
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {[0, 1, 2].map((i) => (
-              <div key={i} className="space-y-2">
-                <div className="h-20 rounded-xl bg-white/10" />
-                <div className="h-2 bg-white/20 rounded" />
-                <div className="h-4 rounded" style={{ background: accent + "80" }} />
+          {/* content */}
+          <div className="aspect-[16/10] p-2">
+            {type === "dashboard" && (
+              <div className="h-full flex flex-col gap-1">
+                <div className="grid grid-cols-4 gap-1">
+                  {[accent, "rgba(255,255,255,0.15)", "rgba(255,255,255,0.1)", "rgba(255,255,255,0.08)"].map(
+                    (c, i) => (
+                      <div key={i} className="h-4 rounded" style={{ background: c }} />
+                    )
+                  )}
+                </div>
+                <div className="flex-1 bg-white/5 rounded flex items-end p-1 gap-0.5">
+                  {[50, 75, 35, 90, 60, 80, 45, 95, 70, 55].map((h, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 rounded-t"
+                      style={{ height: `${h}%`, background: i % 2 === 0 ? accent : "rgba(255,255,255,0.2)" }}
+                    />
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      )}
-      {type === "landing" && (
-        <div className="p-4 space-y-3 bg-[#0f0f1a]">
-          <div className="h-24 rounded-xl flex flex-col items-center justify-center gap-2" style={{ background: `linear-gradient(135deg, ${accent}30, transparent)` }}>
-            <div className="h-3 bg-white/60 rounded w-2/3" />
-            <div className="h-2 bg-white/30 rounded w-1/2" />
-            <div className="h-6 rounded-full px-6 mt-1" style={{ background: accent }} />
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {[0, 1, 2].map((i) => (
-              <div key={i} className="h-20 rounded-xl bg-white/5 border border-white/10" />
-            ))}
-          </div>
-        </div>
-      )}
-      {type === "profile" && (
-        <div className="p-4 space-y-3 bg-[#0d1f2d]">
-          <div className="flex gap-3">
-            <div className="w-16 h-16 rounded-xl" style={{ background: accent + "80" }} />
-            <div className="flex-1 space-y-2 pt-1">
-              <div className="h-3 bg-white/40 rounded w-3/4" />
-              <div className="h-2 bg-white/20 rounded w-1/2" />
-              <div className="h-5 rounded" style={{ background: accent + "60" }} />
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            {[0, 1, 2, 3].map((i) => (
-              <div key={i} className="h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                <div className="w-8 h-8 rounded-full bg-white/10" />
+            )}
+            {type === "ecommerce" && (
+              <div className="h-full flex flex-col gap-1">
+                <div className="h-6 rounded flex items-center px-1.5 gap-1" style={{ background: accent + "30" }}>
+                  <div className="w-2.5 h-2.5 rounded-full" style={{ background: accent }} />
+                  <div className="h-1 flex-1 bg-white/30 rounded" />
+                </div>
+                <div className="flex-1 grid grid-cols-3 gap-1">
+                  {[0, 1, 2].map((i) => (
+                    <div key={i} className="flex flex-col gap-0.5">
+                      <div className="flex-1 rounded bg-white/10" />
+                      <div className="h-1 rounded" style={{ background: accent + "80" }} />
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            )}
+            {type === "landing" && (
+              <div className="h-full flex flex-col gap-1">
+                <div
+                  className="flex-[1.2] rounded flex flex-col items-center justify-center gap-1"
+                  style={{ background: `linear-gradient(135deg, ${accent}30, transparent)` }}
+                >
+                  <div className="h-1.5 bg-white/60 rounded w-2/3" />
+                  <div className="h-1 bg-white/30 rounded w-1/2" />
+                  <div className="h-2.5 rounded-full px-4 mt-0.5" style={{ background: accent }} />
+                </div>
+                <div className="flex-1 grid grid-cols-3 gap-1">
+                  {[0, 1, 2].map((i) => (
+                    <div key={i} className="rounded bg-white/5 border border-white/10" />
+                  ))}
+                </div>
+              </div>
+            )}
+            {type === "profile" && (
+              <div className="h-full flex flex-col gap-1">
+                <div className="flex gap-1.5 flex-[0.8]">
+                  <div className="w-1/3 rounded" style={{ background: accent + "80" }} />
+                  <div className="flex-1 flex flex-col gap-1 justify-center">
+                    <div className="h-1.5 bg-white/40 rounded w-3/4" />
+                    <div className="h-1 bg-white/20 rounded w-1/2" />
+                  </div>
+                </div>
+                <div className="flex-1 grid grid-cols-4 gap-1">
+                  {[0, 1, 2, 3].map((i) => (
+                    <div key={i} className="rounded bg-white/5 border border-white/10" />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
-      )}
+        {/* laptop base */}
+        <div className="h-2 bg-slate-700 rounded-b-lg mx-[-6%] shadow-lg" />
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <div className="min-w-[85%] md:min-w-0 md:w-full snap-center flex flex-col rounded-2xl overflow-hidden border border-outline-variant/30 bg-surface soft-shadow h-full">
+      <LaptopMockup
+        type={project.mockupType}
+        accent={project.accentColor}
+        title={project.title}
+        subtitle={project.subtitle}
+      />
+
+      <div className="flex flex-col flex-grow p-6">
+        <span
+          className="self-start px-3 py-1 rounded-full text-[11px] font-bold mb-3 text-on-tertiary"
+          style={{ background: project.accentColor }}
+        >
+          {project.category}
+        </span>
+
+        <h3 className="font-display font-bold text-lg text-on-surface mb-2">
+          {project.title}
+        </h3>
+        <p className="text-on-surface-variant text-sm leading-relaxed mb-5 flex-grow">
+          {project.desc}
+        </p>
+
+        <div className="flex flex-wrap gap-1.5 mb-5">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-semibold border border-primary/20"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <Link
+          href={`/portofolio/${project.slug}`}
+          className="pt-4 border-t border-outline-variant/30 text-primary font-semibold text-sm flex items-center gap-1.5 hover:gap-2.5 transition-all"
+        >
+          Lihat Detail
+          <ArrowUpRight className="w-4 h-4" />
+        </Link>
+      </div>
     </div>
   );
 }
 
 export function PortfolioSection() {
-  const [current, setCurrent] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
 
-  const prev = () => setCurrent((c) => (c - 1 + projects.length) % projects.length);
-  const next = () => setCurrent((c) => (c + 1) % projects.length);
+  const updateEdges = () => {
+    const el = sliderRef.current;
+    if (!el) return;
+    setAtStart(el.scrollLeft <= 4);
+    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+  };
 
-  const project = projects[current];
+  useEffect(() => {
+    updateEdges();
+  }, []);
+
+  const scrollSlider = (direction: "left" | "right") => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const gap = 32; // gap-8
+    const step = card ? card.offsetWidth + gap : el.clientWidth * 0.85;
+    el.scrollBy({ left: direction === "left" ? -step : step, behavior: "smooth" });
+  };
 
   return (
     <section id="portfolio" className="py-24 bg-surface overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="text-primary font-semibold text-xs tracking-widest uppercase">Portfolio</span>
+            <span className="text-primary font-semibold text-xs tracking-widest uppercase">
+              Portfolio
+            </span>
             <h2 className="font-display font-bold text-4xl md:text-[40px] leading-tight tracking-tight text-on-surface mt-4">
               Proyek yang{" "}
               <span className="text-primary italic">Kami Kerjakan</span>
             </h2>
+            <p className="text-on-surface-variant mt-3 max-w-lg leading-relaxed">
+              Setiap proyek adalah cerita sukses. Ini sebagian kecil dari apa
+              yang telah kami bangun bersama klien kami.
+            </p>
           </div>
-          <Link href="/portofolio" className="text-primary font-semibold text-sm flex items-center gap-2 hover:gap-4 transition-all group">
-            Lihat Semua Proyek
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </Link>
+
+          <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => scrollSlider("left")}
+              disabled={atStart}
+              aria-label="Proyek sebelumnya"
+              className="w-11 h-11 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white hover:border-primary transition-all disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-on-surface-variant disabled:hover:border-outline-variant"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scrollSlider("right")}
+              disabled={atEnd}
+              aria-label="Proyek berikutnya"
+              className="w-11 h-11 rounded-full bg-primary text-white flex items-center justify-center hover:brightness-110 transition-all shadow-lg shadow-primary/30 disabled:opacity-40 disabled:shadow-none"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Slider */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Browser mockup */}
-          <div className="relative">
+        <div
+          ref={sliderRef}
+          onScroll={updateEdges}
+          className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-2 [&::-webkit-scrollbar]:hidden"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {projects.map((project) => (
             <div
-              className="absolute inset-0 rounded-3xl opacity-30 blur-2xl -z-10"
-              style={{ background: `radial-gradient(ellipse, ${project.accentColor}, transparent 70%)` }}
-            />
-            <div className="rounded-3xl overflow-hidden p-1" style={{ background: `linear-gradient(135deg, ${project.accentColor}40, rgba(255,255,255,0.05))` }}>
-              <div className="rounded-[22px] overflow-hidden bg-[#131929] p-2">
-                <BrowserMockup type={project.mockupType} accent={project.accentColor} />
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Project info */}
-          <div>
-            {/* Dot indicators */}
-            <div className="flex items-center gap-2 mb-8">
-              {projects.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === current
-                      ? "w-8 h-2.5 bg-primary"
-                      : "w-2.5 h-2.5 bg-outline-variant hover:bg-primary/40"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <span
-              className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-4 text-on-tertiary"
-              style={{ background: project.accentColor }}
+              key={project.id}
+              data-card
+              className="w-[85%] sm:w-[60%] md:w-[calc((100%-4rem)/3)] shrink-0"
             >
-              {project.category}
-            </span>
-
-            <h3 className="font-display font-bold text-3xl text-on-surface mb-4">
-              {project.title}
-            </h3>
-            <p className="text-on-surface-variant leading-relaxed mb-6">
-              {project.desc}
-            </p>
-
-            {/* Tech stack */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {project.tech.map((t) => (
-                <span
-                  key={t}
-                  className="px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold border border-primary/20"
-                >
-                  {t}
-                </span>
-              ))}
+              <ProjectCard project={project} />
             </div>
+          ))}
+        </div>
 
-            {/* Counter */}
-            <p className="text-on-surface-variant text-sm mb-6">
-              <span className="font-bold text-primary text-lg">{current + 1}</span>
-              <span> / {projects.length} Proyek</span>
-            </p>
-
-            {/* Arrow controls */}
-            <div className="flex items-center gap-3">
-              <button
-                onClick={prev}
-                className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white hover:border-primary transition-all"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={next}
-                className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:brightness-110 transition-all shadow-lg shadow-primary/30"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-              <a
-                href="/portofolio"
-                className="ml-2 inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all"
-              >
-                View Case Study <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
+        {/* View all link */}
+        <div className="flex justify-center mt-12">
+          <Link
+            href="/portofolio"
+            className="text-primary font-semibold text-sm flex items-center gap-2 hover:gap-4 transition-all group"
+          >
+            Lihat Semua Proyek
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>
