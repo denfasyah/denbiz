@@ -57,6 +57,8 @@ const services: ServiceCategory[] = [
           { text: "1 Halaman Responsif", included: true },
           { text: "Domain & Hosting 1 Tahun", included: true },
           { text: "SEO Basic (Meta Tags)", included: true },
+          { text: "Desain Mobile Friendly", included: true },
+          { text: "Integrasi Google Maps", included: true },
           { text: "Revisi 2x", included: true },
           { text: "Support Maintenance", included: false },
         ],
@@ -74,6 +76,8 @@ const services: ServiceCategory[] = [
           { text: "Hingga 3 Section Tambahan", included: true },
           { text: "Integrasi WhatsApp CTA", included: true },
           { text: "Optimasi Kecepatan", included: true },
+          { text: "Copywriting Persuasif", included: true },
+          { text: "Integrasi Form Leads", included: true },
           { text: "Revisi 4x", included: true },
         ],
         cta: "Pilih Paket Sekarang",
@@ -90,6 +94,8 @@ const services: ServiceCategory[] = [
           { text: "Hingga 5 Section", included: true },
           { text: "Custom Animasi & Interaktif", included: true },
           { text: "Google Analytics & Search Console", included: true },
+          { text: "A/B Testing Landing Page", included: true },
+          { text: "Sertifikat SSL Premium", included: true },
           { text: "Support Maintenance 1 Bulan", included: true },
         ],
         cta: "Pilih Paket",
@@ -114,6 +120,8 @@ const services: ServiceCategory[] = [
           { text: "3-5 Halaman (Beranda, Tentang, dll)", included: true },
           { text: "Domain & Hosting 1 Tahun", included: true },
           { text: "SEO Basic (Meta Tags)", included: true },
+          { text: "Desain Responsif Mobile", included: true },
+          { text: "Galeri Foto Produk/Layanan", included: true },
           { text: "Revisi 2x", included: true },
           { text: "Support Maintenance", included: false },
         ],
@@ -131,6 +139,8 @@ const services: ServiceCategory[] = [
           { text: "Hingga 8 Halaman", included: true },
           { text: "Formulir Kontak & Peta Lokasi", included: true },
           { text: "Integrasi Google Analytics", included: true },
+          { text: "Halaman Testimoni Klien", included: true },
+          { text: "Integrasi Media Sosial", included: true },
           { text: "Revisi 4x", included: true },
         ],
         cta: "Pilih Paket Sekarang",
@@ -147,6 +157,8 @@ const services: ServiceCategory[] = [
           { text: "Halaman Karier & Blog", included: true },
           { text: "Custom Animasi & Interaktif", included: true },
           { text: "Dwibahasa (Indonesia/Inggris)", included: true },
+          { text: "Optimasi SEO Lanjutan", included: true },
+          { text: "Chat Widget Terintegrasi", included: true },
           { text: "Support Maintenance 1 Bulan", included: true },
         ],
         cta: "Pilih Paket",
@@ -171,6 +183,8 @@ const services: ServiceCategory[] = [
           { text: "Katalog Produk", included: true },
           { text: "Keranjang & Checkout", included: true },
           { text: "1 Payment Gateway", included: true },
+          { text: "Manajemen Produk Dasar", included: true },
+          { text: "Halaman Detail Produk", included: true },
           { text: "Revisi 2x", included: true },
           { text: "Support Maintenance", included: false },
         ],
@@ -188,6 +202,8 @@ const services: ServiceCategory[] = [
           { text: "Multi Payment Gateway", included: true },
           { text: "Manajemen Stok Otomatis", included: true },
           { text: "Integrasi Ongkir", included: true },
+          { text: "Sistem Diskon & Voucher", included: true },
+          { text: "Notifikasi Pesanan Otomatis", included: true },
           { text: "Revisi 4x", included: true },
         ],
         cta: "Pilih Paket Sekarang",
@@ -204,6 +220,8 @@ const services: ServiceCategory[] = [
           { text: "Sinkronisasi Multi-Platform", included: true },
           { text: "Custom Promo & Diskon", included: true },
           { text: "Integrasi Pixel & Ads", included: true },
+          { text: "Dashboard Laporan Penjualan", included: true },
+          { text: "Fitur Multi-Bahasa & Mata Uang", included: true },
           { text: "Support Maintenance 3 Bulan", included: true },
         ],
         cta: "Pilih Paket",
@@ -228,6 +246,8 @@ const services: ServiceCategory[] = [
           { text: "Modul Dasar (CRUD)", included: true },
           { text: "Admin Dashboard", included: true },
           { text: "Setup Database", included: true },
+          { text: "Autentikasi Pengguna", included: true },
+          { text: "Dokumentasi Sistem", included: true },
           { text: "Revisi 2x", included: true },
           { text: "Support Maintenance", included: false },
         ],
@@ -245,6 +265,8 @@ const services: ServiceCategory[] = [
           { text: "Multi-User Role & Permission", included: true },
           { text: "Integrasi API Pihak Ketiga", included: true },
           { text: "Laporan / Report Generator", included: true },
+          { text: "Notifikasi Real-time", included: true },
+          { text: "Export Data (Excel/PDF)", included: true },
           { text: "Revisi 4x", included: true },
         ],
         cta: "Pilih Paket Sekarang",
@@ -261,6 +283,8 @@ const services: ServiceCategory[] = [
           { text: "Arsitektur Skalabel", included: true },
           { text: "Custom Workflow Bisnis", included: true },
           { text: "Integrasi Sistem Eksternal", included: true },
+          { text: "Backup & Recovery Otomatis", included: true },
+          { text: "Monitoring & Logging Sistem", included: true },
           { text: "Support Maintenance 2 Bulan", included: true },
         ],
         cta: "Pilih Paket",
@@ -285,6 +309,8 @@ const services: ServiceCategory[] = [
           { text: "1 Halaman Portofolio", included: true },
           { text: "Showcase hingga 6 Proyek", included: true },
           { text: "Domain & Hosting 1 Tahun", included: true },
+          { text: "Desain Modern & Responsif", included: true },
+          { text: "Integrasi Kontak Dasar", included: true },
           { text: "Revisi 2x", included: true },
           { text: "Support Maintenance", included: false },
         ],
@@ -302,6 +328,8 @@ const services: ServiceCategory[] = [
           { text: "Showcase hingga 15 Proyek", included: true },
           { text: "CV/Resume Dapat Diunduh", included: true },
           { text: "Integrasi Kontak & Media Sosial", included: true },
+          { text: "Testimoni & Rekomendasi", included: true },
+          { text: "Optimasi SEO Personal Branding", included: true },
           { text: "Revisi 4x", included: true },
         ],
         cta: "Pilih Paket Sekarang",
@@ -318,6 +346,8 @@ const services: ServiceCategory[] = [
           { text: "Custom Animasi & Micro-interaction", included: true },
           { text: "Blog / Studi Kasus Proyek", included: true },
           { text: "Custom Domain Branding", included: true },
+          { text: "Analitik Pengunjung", included: true },
+          { text: "Integrasi Video Showcase", included: true },
           { text: "Support Maintenance 1 Bulan", included: true },
         ],
         cta: "Pilih Paket",
@@ -458,16 +488,16 @@ export function ServicesSection() {
           <div className="w-16 h-1.5 bg-tertiary mx-auto mt-6 rounded-full" />
         </FadeIn>
 
-        {/* Tabs — horizontally scrollable on every breakpoint */}
+        {/* Tabs — horizontally scrollable on mobile, centered on desktop */}
         <FadeIn delay={0.1}>
           <div className="relative mb-10">
-            {/* edge fade hints */}
-            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-surface-container-low to-transparent z-10" />
-            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface-container-low to-transparent z-10" />
+            {/* edge fade hints (only relevant while scrollable, i.e. mobile) */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-surface-container-low to-transparent z-10 md:hidden" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface-container-low to-transparent z-10 md:hidden" />
 
             <div
               ref={tabsRef}
-              className="flex gap-3 overflow-x-auto snap-x snap-proximity px-1 py-1 [&::-webkit-scrollbar]:hidden"
+              className="flex gap-3 overflow-x-auto snap-x snap-proximity px-1 py-1 [&::-webkit-scrollbar]:hidden md:flex-wrap md:justify-center md:overflow-visible"
               style={{ scrollbarWidth: "none" }}
             >
               {services.map((service, i) => {
