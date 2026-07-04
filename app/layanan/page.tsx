@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { ServicesSection } from "@/components/sections/ServicesSection";
-import { PricingSection } from "@/components/sections/PricingSection";
+import { HowweworkSection } from "@/components/sections/HowweworkSection";
+import {CtaSection} from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
   title: "Layanan & Harga - DenBiz",
@@ -21,7 +22,8 @@ export default function LayananPage() {
         ]}
       />
       <ServicesSection />
-      <PricingSection />
+      <HowweworkSection />
+      <CtaSection />
     </>
   );
 }

@@ -48,7 +48,7 @@ export function Navbar() {
             className="shrink-0"
             priority
           />
-          <span className="font-display font-bold text-[22px] text-primary tracking-tight ml-3 leading-none">DenBizz</span>
+          <span className="font-display font-bold text-[22px] text-primary tracking-tight ml-3 leading-none">DenBiz</span>
         </Link>
 
         {/* Desktop Nav */}

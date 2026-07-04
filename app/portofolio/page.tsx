@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { PortfolioGridSection } from "@/components/sections/PortfolioGridSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import {CtaSection} from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
   title: "Portofolio Proyek - DenBiz",
@@ -22,6 +23,7 @@ export default function PortofolioPage() {
       />
       <PortfolioGridSection />
       <TestimonialsSection />
+      <CtaSection />
     </>
   );
 }

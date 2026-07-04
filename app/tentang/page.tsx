@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { AboutIntroSection } from "@/components/sections/Aboutintrosection";
 import { AboutSection } from "@/components/sections/AboutSection";
+import {CtaSection} from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
   title: "Tentang Kami - DenBiz",
@@ -19,7 +21,9 @@ export default function TentangPage() {
           { label: "Tentang Kami" }
         ]}
       />
+      <AboutIntroSection />
       <AboutSection />
+      <CtaSection />
     </>
   );
 }

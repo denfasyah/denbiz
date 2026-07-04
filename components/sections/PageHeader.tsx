@@ -9,12 +9,12 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, subtitle, description, breadcrumbs }: PageHeaderProps) {
   return (
-    <section className="bg-primary pt-36 pb-20 px-4 md:px-8 relative overflow-hidden">
+    <section className="bg-primary pt-36 pb-20 relative overflow-hidden">
       {/* Decorative patterns similar to main hero */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl -z-0 pointer-events-none translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-tertiary/10 rounded-full blur-3xl -z-0 pointer-events-none -translate-x-1/2 translate-y-1/2" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10">
         {/* Breadcrumbs */}
         <nav className="flex items-center gap-2 text-sm text-white/60 mb-8">
           {breadcrumbs.map((item, index) => {
