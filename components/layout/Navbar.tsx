@@ -7,13 +7,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-  { name: "Beranda", href: "/" },
-  { name: "Tentang", href: "/tentang" },
-  { name: "Layanan", href: "/layanan" },
-  { name: "Portofolio", href: "/portofolio" },
-  { name: "Kontak", href: "/kontak" },
-];
+import { navLinks } from "@/data/nav-links";
 
 import { usePathname } from "next/navigation";
 

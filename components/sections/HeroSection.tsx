@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MessageCircle, Star, Zap, ShieldCheck } from "lucide-react";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function HeroSection() {
   return (
@@ -47,7 +48,7 @@ export function HeroSection() {
 
           <div className="flex flex-wrap gap-4">
             <a
-              href="https://wa.me/6281234567890"
+              href={buildWhatsAppLink("Halo DenBizz, saya ingin konsultasi mengenai pembuatan website/aplikasi.")}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 bg-tertiary text-on-tertiary px-7 py-3.5 rounded-xl font-bold text-sm hover:brightness-105 transition-all shadow-xl shadow-black/20 active:scale-95"
@@ -95,6 +96,7 @@ export function HeroSection() {
                 width={600} 
                 height={500} 
                 className="w-full h-auto object-cover rounded-2xl"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 priority
               />
             </div>

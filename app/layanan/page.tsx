@@ -7,6 +7,14 @@ import {CtaSection} from "@/components/sections/CtaSection";
 export const metadata: Metadata = {
   title: "Layanan & Harga - DenBiz",
   description: "Layanan pembuatan website, aplikasi sistem informasi, dan e-commerce dari DenBiz beserta paket harganya.",
+  openGraph: {
+    title: "Layanan & Harga - DenBiz",
+    description: "Layanan pembuatan website, aplikasi sistem informasi, dan e-commerce dari DenBiz beserta paket harganya.",
+    url: "https://denbiz.agency/layanan",
+    siteName: "DenBiz",
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
 export default function LayananPage() {

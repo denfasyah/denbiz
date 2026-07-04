@@ -6,6 +6,14 @@ import { FAQSection } from "@/components/sections/FAQSection";
 export const metadata: Metadata = {
   title: "Hubungi Kami - DenBiz",
   description: "Hubungi DenBiz untuk berkonsultasi mengenai proyek digital Anda.",
+  openGraph: {
+    title: "Hubungi Kami - DenBiz",
+    description: "Hubungi DenBiz untuk berkonsultasi mengenai proyek digital Anda.",
+    url: "https://denbiz.agency/kontak",
+    siteName: "DenBiz",
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
 export default function KontakPage() {

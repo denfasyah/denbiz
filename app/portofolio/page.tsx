@@ -7,6 +7,14 @@ import {CtaSection} from "@/components/sections/CtaSection";
 export const metadata: Metadata = {
   title: "Portofolio Proyek - DenBiz",
   description: "Lihat portofolio dan hasil karya terbaik DenBiz dalam pengembangan website.",
+  openGraph: {
+    title: "Portofolio Proyek - DenBiz",
+    description: "Lihat portofolio dan hasil karya terbaik DenBiz dalam pengembangan website.",
+    url: "https://denbiz.agency/portofolio",
+    siteName: "DenBiz",
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
 export default function PortofolioPage() {

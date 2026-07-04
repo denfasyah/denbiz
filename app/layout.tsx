@@ -25,10 +25,19 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Denbiz",
+  metadataBase: new URL("https://denbiz.agency"),
+  title: {
+    default: "DenBiz - Jasa Pembuatan Website & Aplikasi Professional",
+    template: "%s | DenBiz",
+  },
   description: "Jasa pembuatan website profesional, performa tinggi, dan konversi maksimal.",
   icons: {
     icon: "/logo.png",
+  },
+  openGraph: {
+    siteName: "DenBiz",
+    locale: "id_ID",
+    type: "website",
   },
 };
 

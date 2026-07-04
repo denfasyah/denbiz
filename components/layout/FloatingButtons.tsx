@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { MessageCircle, ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export function FloatingButtons() {
   const [showTopButton, setShowTopButton] = useState(false);
@@ -43,7 +44,7 @@ export function FloatingButtons() {
 
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/6281234567890"
+        href={buildWhatsAppLink("Halo DenBizz, saya butuh bantuan.")}
         target="_blank"
         rel="noreferrer"
         aria-label="Hubungi via WhatsApp"

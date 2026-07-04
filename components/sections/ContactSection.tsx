@@ -4,6 +4,8 @@ import { useState, Suspense } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import Swal from "sweetalert2";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { WHATSAPP_NUMBER } from "@/data/constants";
 
 const serviceOptions = [
   "Landing Page",
@@ -154,8 +156,8 @@ export function ContactSection() {
                   {
                     icon: Phone,
                     label: "WhatsApp",
-                    value: "+62 812-3456-7890",
-                    href: "https://wa.me/6281234567890"
+                    value: `+${WHATSAPP_NUMBER.slice(0, 2)} ${WHATSAPP_NUMBER.slice(2, 5)}-${WHATSAPP_NUMBER.slice(5, 9)}-${WHATSAPP_NUMBER.slice(9)}`,
+                    href: buildWhatsAppLink("Halo DenBizz, saya ingin bertanya.")
                   },
                 ].map(({ icon: Icon, label, value, href }) => (
                   <a key={label} href={href} target="_blank" rel="noreferrer" className="flex items-center gap-4 hover:opacity-80 transition-opacity">

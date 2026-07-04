@@ -7,6 +7,14 @@ import {CtaSection} from "@/components/sections/CtaSection";
 export const metadata: Metadata = {
   title: "Tentang Kami - DenBiz",
   description: "Pelajari sejarah, visi, dan tim profesional di balik layanan DenBiz.",
+  openGraph: {
+    title: "Tentang Kami - DenBiz",
+    description: "Pelajari sejarah, visi, dan tim profesional di balik layanan DenBiz.",
+    url: "https://denbiz.agency/tentang",
+    siteName: "DenBiz",
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
 export default function TentangPage() {

@@ -1,48 +1,24 @@
 "use client";
 
-import { MessagesSquare, Clock, Gauge, ShieldCheck } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
-const reasons = [
-  {
-    icon: MessagesSquare,
-    title: "Komunikasi yang Jelas",
-    desc: "Setiap kebutuhan teknis dijelaskan dengan bahasa yang mudah dipahami, tanpa istilah yang membingungkan.",
-  },
-  {
-    icon: Clock,
-    title: "Estimasi Waktu Realistis",
-    desc: "Linimasa pengerjaan disampaikan di awal dan dipegang teguh, bukan sekadar angka perkiraan.",
-  },
-  {
-    icon: Gauge,
-    title: "Standar SEO & Kecepatan",
-    desc: "Website dibangun ringan dan cepat, dengan struktur teknis yang ramah mesin pencari sejak awal pengembangan.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Skalabilitas & Keamanan",
-    desc: "Dibangun di atas fondasi teknologi modern yang aman dan siap menyesuaikan seiring pertumbuhan bisnis Anda.",
-  },
-];
+import { reasons } from "@/data/company-values";
 
 export function AboutSection() {
   return (
     <section className="bg-surface py-24">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <FadeIn className="max-w-2xl mx-auto text-center mb-16">
-          <span className="text-primary font-semibold text-xs tracking-widest uppercase">
-            Keunggulan
-          </span>
-          <h2 className="font-display font-bold text-4xl md:text-5xl leading-tight tracking-tight text-on-surface mt-4 mb-5">
-            Mengapa Memilih{" "}
-            <span className="text-tertiary italic">Kami </span>?
-          </h2>
-          <p className="text-on-surface-variant leading-relaxed">
-            DenBiz menangani pembuatan website dan aplikasi web dari awal
-            hingga rilis, dengan proses yang jelas dan hasil yang dapat
-            diukur.
-          </p>
+        <FadeIn>
+          <SectionHeader
+            eyebrow="Keunggulan"
+            title={
+              <>
+                Mengapa Memilih <span className="text-tertiary italic">Kami </span>?
+              </>
+            }
+            subtitle="DenBiz menangani pembuatan website dan aplikasi web dari awal hingga rilis, dengan proses yang jelas dan hasil yang dapat diukur."
+          />
         </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -4,13 +4,8 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-// Ganti dengan nomor WhatsApp bisnis kamu (format: kode negara tanpa "+" atau "0")
-const WHATSAPP_NUMBER = "6281234567890";
-const WHATSAPP_MESSAGE =
-  "Halo DenBizz, saya ingin diskusi kebutuhan proyek website/aplikasi saya.";
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  WHATSAPP_MESSAGE
-)}`;
+import { buildWhatsAppLink } from "@/lib/whatsapp";
+const WHATSAPP_LINK = buildWhatsAppLink("Halo DenBizz, saya ingin diskusi kebutuhan proyek website/aplikasi saya.");
 
 
 

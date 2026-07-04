@@ -1,9 +1,11 @@
 import { MessageCircle } from "lucide-react";
 
+import { buildWhatsAppLink } from "@/lib/whatsapp";
+
 export function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/6281234567890"
+      href={buildWhatsAppLink("Halo DenBizz, saya ingin bertanya tentang layanan Anda.")}
       target="_blank"
       rel="noreferrer"
       aria-label="Hubungi via WhatsApp"

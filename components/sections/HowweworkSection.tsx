@@ -9,59 +9,29 @@ import {
   ArrowDown,
 } from "lucide-react";
 
-// Ganti dengan nomor WhatsApp bisnis kamu (format: kode negara tanpa "+" atau "0")
-const WHATSAPP_NUMBER = "6281234567890";
-const WHATSAPP_MESSAGE =
-  "Halo DenBizz, saya ingin diskusi kebutuhan proyek website/aplikasi saya.";
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  WHATSAPP_MESSAGE
-)}`;
+import { steps } from "@/data/process-steps";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { FadeIn } from "@/components/ui/FadeIn";
 
-const steps = [
-  {
-    number: "01",
-    icon: MessageCircle,
-    title: "Diskusi Kebutuhan",
-    desc: "Ceritakan project impian Anda — jenis platform, fitur wajib, sampai target pengguna. Kami dengarkan dulu sebelum bicara solusi.",
-  },
-  {
-    number: "02",
-    icon: Compass,
-    title: "Rancang Solusi & Estimasi",
-    desc: "Tim kami menyusun rekomendasi paket, teknologi, dan estimasi biaya yang paling pas dengan kebutuhan serta budget Anda.",
-  },
-  {
-    number: "03",
-    icon: HandCoins,
-    title: "Kesepakatan & Persiapan",
-    desc: "Setelah sepakat, DP 50% dan lengkapi aset (logo, teks, gambar) — proyek Anda resmi mulai dikerjakan.",
-  },
-  {
-    number: "04",
-    icon: Rocket,
-    title: "Eksekusi & Serah Terima",
-    desc: "Kami kerjakan dengan update rutin, lalu serah terima penuh setelah Anda benar-benar puas dengan hasilnya.",
-  },
-];
+const WHATSAPP_MESSAGE = "Halo DenBizz, saya ingin diskusi kebutuhan proyek website/aplikasi saya.";
+const WHATSAPP_LINK = buildWhatsAppLink(WHATSAPP_MESSAGE);
 
 export function HowweworkSection() {
   return (
     <section id="cara-kerja" className="py-24 bg-surface relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 md:px-8 relative">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="text-primary font-semibold text-xs tracking-widest uppercase">
-            Cara Kerja
-          </span>
-          <h2 className="font-display font-bold text-4xl md:text-[40px] leading-tight tracking-tight text-on-surface mt-4">
-            Dari Ide Menjadi{" "}
-            <span className="text-primary italic">Website Siap Pakai</span>
-          </h2>
-          <p className="text-on-surface-variant mt-5 leading-relaxed">
-            Proses kerja yang transparan dan terstruktur, dari obrolan
-            pertama sampai proyek Anda resmi live — cukup 4 langkah.
-          </p>
-        </div>
+        <FadeIn>
+          <SectionHeader
+            eyebrow="Cara Kerja"
+            title={
+              <>
+                Dari Ide Menjadi <span className="text-primary italic">Website Siap Pakai</span>
+              </>
+            }
+            subtitle="Proses kerja yang transparan dan terstruktur, dari obrolan pertama sampai proyek Anda resmi live — cukup 4 langkah."
+          />
+        </FadeIn>
 
         {/* Desktop: zigzag stepper */}
         <div className="hidden md:flex items-start gap-4 mb-24">
@@ -70,7 +40,7 @@ export function HowweworkSection() {
             const isLast = i === steps.length - 1;
             const offset = i % 2 === 1 ? "md:mt-12" : "";
             return (
-              <div key={step.number} className="flex-1 flex items-start gap-4">
+              <FadeIn key={step.number} delay={i * 0.15} className="flex-1 flex items-start gap-4">
                 <div
                   className={`relative flex-1 rounded-3xl border border-outline-variant/30 bg-surface-container-low p-7 overflow-hidden ${offset}`}
                 >
@@ -95,7 +65,7 @@ export function HowweworkSection() {
                     className={`w-6 h-6 text-outline-variant shrink-0 mt-16 ${offset}`}
                   />
                 )}
-              </div>
+              </FadeIn>
             );
           })}
         </div>
@@ -106,7 +76,7 @@ export function HowweworkSection() {
             const Icon = step.icon;
             const isLast = i === steps.length - 1;
             return (
-              <div key={step.number}>
+              <FadeIn key={step.number} delay={i * 0.1}>
                 <div className="relative rounded-3xl border border-outline-variant/30 bg-surface-container-low p-6 overflow-hidden">
                   <span className="absolute -top-3 -right-1 font-display font-bold text-6xl text-on-surface/[0.04] select-none">
                     {step.number}
@@ -128,7 +98,7 @@ export function HowweworkSection() {
                     <ArrowDown className="w-5 h-5 text-outline-variant" />
                   </div>
                 )}
-              </div>
+              </FadeIn>
             );
           })}
         </div>

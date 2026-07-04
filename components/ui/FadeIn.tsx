@@ -8,12 +8,18 @@ interface FadeInProps {
   className?: string;
 }
 
+export const FADE_UP_ANIMATION_VARIANTS = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0 },
+};
+
 export function FadeIn({ children, delay = 0, className }: FadeInProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true, margin: "-100px" }}
+      variants={FADE_UP_ANIMATION_VARIANTS}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
       className={className}
     >
