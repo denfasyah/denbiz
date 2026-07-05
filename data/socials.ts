@@ -8,14 +8,14 @@ export type SocialLink = {
 };
 
 export const socials: SocialLink[] = [
-  {
-    name: "Instagram",
-    href: "https://instagram.com/denbiz",
-    icon: InstagramIcon,
-  },
+  // {
+  //   name: "Instagram",
+  //   href: "https://instagram.com/denbiz",
+  //   icon: InstagramIcon,
+  // },
   {
     name: "TikTok",
-    href: "https://tiktok.com/@denbiz",
+    href: "https://www.tiktok.com/@denbiz_",
     icon: TikTokIcon,
   },
 ];

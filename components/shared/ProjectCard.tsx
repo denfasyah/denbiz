@@ -22,7 +22,8 @@ export function LaptopMockup({
   return (
     <div
       className={cn(
-        "relative h-52 flex flex-col items-center justify-center overflow-hidden",
+        // h-52 -> h-72: kontainer diperbesar biar ada ruang buat laptop yang lebih gede
+        "relative h-72 flex flex-col items-center justify-center overflow-hidden",
         className
       )}
       style={{
@@ -41,28 +42,37 @@ export function LaptopMockup({
 
       {/* Glow blob */}
       <div
-        className="absolute w-36 h-36 rounded-full blur-3xl opacity-40"
+        className="absolute w-48 h-48 rounded-full blur-3xl opacity-40"
         style={{ background: accent }}
       />
 
       {/* Laptop frame */}
-      <div className={cn("relative w-[60%]", screenshot ? "mt-4" : "mt-9")}>
+      <div
+        className={cn(
+          // w-[60%] -> w-[82%]: frame laptop diperbesar signifikan
+          "relative w-[82%]",
+          screenshot ? "mt-6" : "mt-9"
+        )}
+      >
         <div className="rounded-t-md border-[3px] border-b-0 border-slate-700 bg-[#0c1424] overflow-hidden shadow-2xl">
           <div className="flex items-center gap-1 px-2 py-1.5 bg-black/40">
             <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
             <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
           </div>
-          <div className="aspect-[16/10] overflow-hidden">
+          <div className="aspect-[16/10] overflow-hidden relative bg-[#0c1424]">
             {screenshot ? (
               /* ── Screenshot mode ── */
+              /* object-contain supaya seluruh screenshot terlihat utuh tanpa
+                 crop kiri-kanan. Frame yang lebih besar (w-[82%] + h-72)
+                 bikin gambar tampil jauh lebih jelas dibanding sebelumnya. */
               <div className="relative w-full h-full">
                 <Image
                   src={screenshot}
                   alt={`Screenshot ${title}`}
                   fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-contain object-top"
+                  sizes="(max-width: 768px) 70vw, 35vw"
                 />
               </div>
             ) : (
@@ -175,7 +185,7 @@ export function LaptopMockup({
             )}
           </div>
         </div>
-        <div className="h-2 bg-slate-700 rounded-b-lg mx-[-6%] shadow-lg" />
+        <div className="h-2.5 bg-slate-700 rounded-b-lg mx-[-6%] shadow-lg" />
       </div>
 
       {/* Title overlay on top of screenshot */}
