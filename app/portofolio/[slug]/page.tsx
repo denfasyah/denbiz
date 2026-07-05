@@ -50,7 +50,7 @@ export default async function CaseStudyPage({ params }: Props) {
       <main>
         {/* ── Hero ── */}
         <section
-          className="relative pt-32 pb-20 overflow-hidden"
+          className="relative pt-32 pb-24 overflow-hidden"
           style={{
             background: `linear-gradient(160deg, #0b1223 0%, #101b34 50%, ${project.accentColor}18 100%)`,
           }}
@@ -94,7 +94,7 @@ export default async function CaseStudyPage({ params }: Props) {
             </p>
 
             {/* CTAs */}
-            <div className="flex items-center gap-4 flex-wrap">
+            <div className="flex items-center gap-4 flex-wrap mb-16">
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -112,23 +112,22 @@ export default async function CaseStudyPage({ params }: Props) {
                 Semua Proyek
               </Link>
             </div>
-          </div>
-        </section>
 
-        {/* ── Laptop Mockup besar ── */}
-        <section className="bg-surface-container-low py-0">
-          <div className="max-w-3xl mx-auto px-4 md:px-8 -mt-10">
-            <div
-              className="rounded-2xl overflow-hidden shadow-2xl border border-white/10"
-              style={{ boxShadow: `0 40px 80px ${project.accentColor}30` }}
-            >
-              <LaptopMockup
-                type={project.mockupType}
-                accent={project.accentColor}
-                title={project.title}
-                subtitle={project.subtitle}
-                screenshot={project.screenshot}
-              />
+            {/* ── Laptop Mockup — di dalam hero supaya latar belakang gelap nyambung ── */}
+            <div className="max-w-2xl mx-auto">
+              <div
+                className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+                style={{ boxShadow: `0 40px 80px ${project.accentColor}35` }}
+              >
+                <LaptopMockup
+                  type={project.mockupType}
+                  accent={project.accentColor}
+                  title={project.title}
+                  subtitle={project.subtitle}
+                  screenshot={project.screenshot}
+                  className="h-72 md:h-96"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -137,7 +136,10 @@ export default async function CaseStudyPage({ params }: Props) {
         <section className="py-20 bg-surface-container-low">
           <div className="max-w-5xl mx-auto px-4 md:px-8">
             <div className="text-center mb-12">
-              <p className="text-sm font-semibold uppercase tracking-wider mb-2" style={{ color: project.accentColor }}>
+              <p
+                className="text-sm font-semibold uppercase tracking-wider mb-2"
+                style={{ color: project.accentColor }}
+              >
                 Fitur Unggulan
               </p>
               <h2 className="text-2xl md:text-3xl font-display font-bold text-on-surface">
@@ -248,7 +250,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </section>
         )}
 
-        {/* ── Related CTA ── */}
+        {/* ── CTA ── */}
         <section className="py-20 bg-surface">
           <div className="max-w-5xl mx-auto px-4 md:px-8">
             <div

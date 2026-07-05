@@ -10,16 +10,21 @@ export function LaptopMockup({
   title,
   subtitle,
   screenshot,
+  className,
 }: {
   type: MockupType;
   accent: string;
   title: string;
   subtitle: string;
   screenshot?: string;
+  className?: string;
 }) {
   return (
     <div
-      className="relative h-52 flex flex-col items-center justify-center overflow-hidden"
+      className={cn(
+        "relative h-52 flex flex-col items-center justify-center overflow-hidden",
+        className
+      )}
       style={{
         background: `linear-gradient(160deg, #101b34, #182a4d 60%, ${accent}25)`,
       }}

@@ -17,35 +17,23 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 function PlanCard({
   plan,
   serviceTitle,
-  serviceColor,
 }: {
   plan: Plan;
   serviceTitle: string;
-  serviceColor: string;
 }) {
   return (
     <div
       className={[
         "flex flex-col rounded-2xl p-8 md:p-10 border relative overflow-hidden h-full",
         plan.featured
-          ? "border-2 bg-white shadow-xl md:scale-105 z-10"
+          ? "border-2 border-tertiary bg-white shadow-xl md:scale-105 z-10"
           : plan.dark
-          ? "border text-white"
+          ? "border border-primary bg-primary text-on-primary"
           : "border border-outline-variant/30 bg-surface soft-shadow",
       ].join(" ")}
-      style={
-        plan.featured
-          ? { borderColor: serviceColor }
-          : plan.dark
-          ? { background: serviceColor, borderColor: serviceColor }
-          : undefined
-      }
     >
       {plan.featured && (
-        <span
-          className="absolute top-5 right-5 text-white text-[10px] font-bold uppercase px-3 py-1.5 rounded-full"
-          style={{ background: serviceColor }}
-        >
+        <span className="absolute top-5 right-5 bg-tertiary text-on-tertiary text-[10px] font-bold uppercase px-3 py-1.5 rounded-full">
           Best Value
         </span>
       )}
@@ -54,6 +42,8 @@ function PlanCard({
         className={`font-semibold text-xs uppercase tracking-wider mb-2 ${
           plan.dark
             ? "text-white/70"
+            : plan.featured
+            ? "text-primary"
             : "text-on-surface-variant"
         }`}
       >
@@ -71,9 +61,8 @@ function PlanCard({
       <div className="mb-8">
         <span
           className={`text-3xl font-bold font-display ${
-            plan.dark ? "text-white" : ""
+            plan.dark ? "text-white" : "text-primary"
           }`}
-          style={plan.dark ? undefined : { color: serviceColor }}
         >
           {plan.price}
         </span>
@@ -99,9 +88,9 @@ function PlanCard({
             }`}
           >
             {plan.dark ? (
-              <BadgeCheck className="w-4 h-4 shrink-0" style={{ color: "rgba(255,255,255,0.8)" }} />
+              <BadgeCheck className="w-4 h-4 text-tertiary shrink-0" />
             ) : f.included ? (
-              <Check className="w-4 h-4 shrink-0" style={{ color: serviceColor }} />
+              <Check className="w-4 h-4 text-primary shrink-0" />
             ) : (
               <X className="w-4 h-4 shrink-0" />
             )}
@@ -119,30 +108,11 @@ function PlanCard({
         className={[
           "w-full py-3.5 font-semibold text-sm rounded-xl text-center block transition-all",
           plan.featured
-            ? "text-white hover:brightness-105 shadow-md"
+            ? "bg-tertiary text-on-tertiary hover:brightness-105 shadow-md"
             : plan.dark
-            ? "bg-white hover:brightness-95"
-            : "border border-outline-variant text-on-surface hover:text-white transition-colors",
+            ? "bg-white text-primary hover:brightness-95"
+            : "border border-outline-variant text-on-surface hover:bg-on-surface hover:text-white",
         ].join(" ")}
-        style={
-          plan.featured
-            ? { background: serviceColor }
-            : plan.dark
-            ? { color: serviceColor }
-            : undefined
-        }
-        onMouseEnter={(e) => {
-          if (!plan.featured && !plan.dark) {
-            (e.currentTarget as HTMLAnchorElement).style.background = serviceColor;
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = serviceColor;
-          }
-        }}
-        onMouseLeave={(e) => {
-          if (!plan.featured && !plan.dark) {
-            (e.currentTarget as HTMLAnchorElement).style.background = "";
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = "";
-          }
-        }}
       >
         {plan.cta}
       </a>
@@ -208,28 +178,15 @@ export function ServicesSection() {
                     className={[
                       "flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all border whitespace-nowrap snap-center shrink-0",
                       isActive
-                        ? "text-white border-transparent shadow-md"
-                        : "bg-white text-on-surface-variant border-outline-variant/40 hover:text-on-surface",
+                        ? "bg-on-surface text-white border-on-surface shadow-md"
+                        : "bg-white text-on-surface-variant border-outline-variant/40 hover:border-primary hover:text-on-surface",
                     ].join(" ")}
-                    style={
-                      isActive
-                        ? { background: service.color, borderColor: service.color }
-                        : { borderColor: undefined }
-                    }
-                    onMouseEnter={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.borderColor = service.color;
-                        e.currentTarget.style.color = service.color;
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.borderColor = "";
-                        e.currentTarget.style.color = "";
-                      }
-                    }}
                   >
-                    <Icon className="w-4 h-4 shrink-0" />
+                    {/* Icon pakai warna khas layanan */}
+                    <Icon
+                      className="w-4 h-4 shrink-0"
+                      style={{ color: isActive ? "#fff" : service.color }}
+                    />
                     {service.shortLabel}
                   </button>
                 );
@@ -252,7 +209,6 @@ export function ServicesSection() {
               key={plan.name}
               plan={plan}
               serviceTitle={active.title}
-              serviceColor={active.color}
             />
           ))}
         </div>
@@ -266,11 +222,7 @@ export function ServicesSection() {
           >
             {active.plans.map((plan) => (
               <div key={plan.name} className="min-w-[85%] snap-center">
-                <PlanCard
-                  plan={plan}
-                  serviceTitle={active.title}
-                  serviceColor={active.color}
-                />
+                <PlanCard plan={plan} serviceTitle={active.title} />
               </div>
             ))}
           </div>
