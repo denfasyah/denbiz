@@ -22,8 +22,10 @@ export function LaptopMockup({
   return (
     <div
       className={cn(
-        // h-52 -> h-72: kontainer diperbesar biar ada ruang buat laptop yang lebih gede
-        "relative h-72 flex flex-col items-center justify-center overflow-hidden",
+        // aspect-ratio dipakai (bukan h-72 fix) supaya tinggi container
+        // selalu ikut menyesuaikan lebar card. Ini yang bikin laptop
+        // tidak pernah "kepotong" di bawah, baik di card kecil maupun besar.
+        "relative w-full aspect-[5/4] flex flex-col items-center justify-center overflow-hidden",
         className
       )}
       style={{
@@ -32,7 +34,7 @@ export function LaptopMockup({
     >
       {/* Title overlay — only shown without screenshot */}
       {!screenshot && (
-        <div className="absolute top-5 left-0 right-0 text-center px-6 z-10">
+        <div className="absolute top-4 left-0 right-0 text-center px-6 z-10">
           <h4 className="text-white font-display font-bold text-base leading-tight">
             {title}
           </h4>
@@ -49,24 +51,28 @@ export function LaptopMockup({
       {/* Laptop frame */}
       <div
         className={cn(
-          // w-[60%] -> w-[82%]: frame laptop diperbesar signifikan
-          "relative w-[82%]",
-          screenshot ? "mt-6" : "mt-9"
+          // 78% dipilih supaya, dikombinasikan dengan aspect-[5/4] di
+          // container, laptop selalu punya sisa ruang vertikal yang aman
+          // untuk browser-bar + base, di lebar card berapa pun.
+          "relative w-[78%]",
+          screenshot ? "mt-5" : "mt-8"
         )}
       >
         <div className="rounded-t-md border-[3px] border-b-0 border-slate-700 bg-[#0c1424] overflow-hidden shadow-2xl">
-          <div className="flex items-center gap-1 px-2 py-1.5 bg-black/40">
+          {/* <div className="flex items-center gap-1 px-2 py-1 bg-black/40">
             <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
             <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-          </div>
-          <div className="aspect-[16/10] overflow-hidden relative bg-[#0c1424]">
+          </div> */}
+          <div className="aspect-[20/10] overflow-hidden relative bg-[#0c1424]">
             {screenshot ? (
               /* ── Screenshot mode ── */
-              /* object-contain supaya seluruh screenshot terlihat utuh tanpa
-                 crop kiri-kanan. Frame yang lebih besar (w-[82%] + h-72)
-                 bikin gambar tampil jauh lebih jelas dibanding sebelumnya. */
-              <div className="relative w-full h-full">
+              /* object-contain: seluruh screenshot SELALU tampil utuh, tidak
+                 ada logo/teks yang terpotong di kiri-kanan atau atas-bawah,
+                 berapapun rasio aslinya. Sisa spasi (jika ada) otomatis
+                 menyatu dengan bg gelap browser-chrome di bawahnya, jadi
+                 tetap terlihat rapi/clean, bukan kosong mencolok. */
+              <div className="relative w-full h-full bg-[#0c1424]">
                 <Image
                   src={screenshot}
                   alt={`Screenshot ${title}`}
@@ -185,7 +191,7 @@ export function LaptopMockup({
             )}
           </div>
         </div>
-        <div className="h-2.5 bg-slate-700 rounded-b-lg mx-[-6%] shadow-lg" />
+        <div className="h-2 bg-slate-700 rounded-b-lg mx-[-6%] shadow-lg" />
       </div>
 
       {/* Title overlay on top of screenshot */}
