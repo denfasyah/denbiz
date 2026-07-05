@@ -21,10 +21,11 @@ export type Plan = {
 
 export type ServiceCategory = {
   slug: string;
-  icon: any; // using any here to avoid strict lucide-react typing issues, can refine later
+  icon: any;
   shortLabel: string;
   title: string;
   desc: string;
+  color: string;
   plans: Plan[];
 };
 
@@ -34,6 +35,7 @@ export const services: ServiceCategory[] = [
     icon: Layout,
     shortLabel: "Landing Page",
     title: "Landing Page",
+    color: "#6366f1",
     desc: "Satu halaman fokus konversi untuk promosi produk, event, atau penawaran spesifik — cepat, ringkas, dan langsung ke inti.",
     plans: [
       {
@@ -97,6 +99,7 @@ export const services: ServiceCategory[] = [
     icon: Building2,
     shortLabel: "Company Profile",
     title: "Company Profile",
+    color: "#0ea5e9",
     desc: "Website multi-halaman yang merepresentasikan identitas perusahaan secara menyeluruh, dari profil, layanan, hingga kontak.",
     plans: [
       {
@@ -160,6 +163,7 @@ export const services: ServiceCategory[] = [
     icon: ShoppingCart,
     shortLabel: "E-Commerce",
     title: "E-Commerce",
+    color: "#f59e0b",
     desc: "Toko online berperforma tinggi dengan integrasi payment gateway dan sistem manajemen produk yang lengkap.",
     plans: [
       {
@@ -223,6 +227,7 @@ export const services: ServiceCategory[] = [
     icon: Code2,
     shortLabel: "Sistem Informasi",
     title: "Sistem Informasi",
+    color: "#10b981",
     desc: "Aplikasi web kustom untuk kebutuhan operasional bisnis, dari manajemen data hingga dashboard admin, dibangun dengan arsitektur yang skalabel.",
     plans: [
       {
@@ -286,6 +291,7 @@ export const services: ServiceCategory[] = [
     icon: Briefcase,
     shortLabel: "Portofolio",
     title: "Portofolio",
+    color: "#ec4899",
     desc: "Website personal untuk menampilkan karya dan pengalaman profesional Anda — cocok untuk freelancer, kreator, atau job seeker.",
     plans: [
       {

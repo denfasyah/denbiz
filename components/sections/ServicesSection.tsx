@@ -2,11 +2,6 @@
 
 import { useRef, useState } from "react";
 import {
-  Layout,
-  Building2,
-  ShoppingCart,
-  Code2,
-  Briefcase,
   Check,
   X,
   BadgeCheck,
@@ -19,27 +14,38 @@ import { Plan, services } from "@/data/services";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
-
 function PlanCard({
   plan,
   serviceTitle,
+  serviceColor,
 }: {
   plan: Plan;
   serviceTitle: string;
+  serviceColor: string;
 }) {
   return (
     <div
       className={[
         "flex flex-col rounded-2xl p-8 md:p-10 border relative overflow-hidden h-full",
         plan.featured
-          ? "border-2 border-tertiary bg-white shadow-xl md:scale-105 z-10"
+          ? "border-2 bg-white shadow-xl md:scale-105 z-10"
           : plan.dark
-          ? "border border-primary bg-primary text-on-primary"
+          ? "border text-white"
           : "border border-outline-variant/30 bg-surface soft-shadow",
       ].join(" ")}
+      style={
+        plan.featured
+          ? { borderColor: serviceColor }
+          : plan.dark
+          ? { background: serviceColor, borderColor: serviceColor }
+          : undefined
+      }
     >
       {plan.featured && (
-        <span className="absolute top-5 right-5 bg-tertiary text-on-tertiary text-[10px] font-bold uppercase px-3 py-1.5 rounded-full">
+        <span
+          className="absolute top-5 right-5 text-white text-[10px] font-bold uppercase px-3 py-1.5 rounded-full"
+          style={{ background: serviceColor }}
+        >
           Best Value
         </span>
       )}
@@ -48,13 +54,12 @@ function PlanCard({
         className={`font-semibold text-xs uppercase tracking-wider mb-2 ${
           plan.dark
             ? "text-white/70"
-            : plan.featured
-            ? "text-primary"
             : "text-on-surface-variant"
         }`}
       >
         {plan.tier}
       </span>
+
       <h3
         className={`font-display font-bold text-xl mb-6 ${
           plan.dark ? "text-white" : "text-on-surface"
@@ -62,11 +67,13 @@ function PlanCard({
       >
         {plan.name}
       </h3>
+
       <div className="mb-8">
         <span
           className={`text-3xl font-bold font-display ${
-            plan.dark ? "text-white" : "text-primary"
+            plan.dark ? "text-white" : ""
           }`}
+          style={plan.dark ? undefined : { color: serviceColor }}
         >
           {plan.price}
         </span>
@@ -78,6 +85,7 @@ function PlanCard({
           {plan.unit}
         </span>
       </div>
+
       <ul className="space-y-4 mb-10 flex-grow">
         {plan.features.map((f) => (
           <li
@@ -91,9 +99,9 @@ function PlanCard({
             }`}
           >
             {plan.dark ? (
-              <BadgeCheck className="w-4 h-4 text-tertiary shrink-0" />
+              <BadgeCheck className="w-4 h-4 shrink-0" style={{ color: "rgba(255,255,255,0.8)" }} />
             ) : f.included ? (
-              <Check className="w-4 h-4 text-primary shrink-0" />
+              <Check className="w-4 h-4 shrink-0" style={{ color: serviceColor }} />
             ) : (
               <X className="w-4 h-4 shrink-0" />
             )}
@@ -101,18 +109,40 @@ function PlanCard({
           </li>
         ))}
       </ul>
+
       <a
-        href={buildWhatsAppLink(`Halo DenBizz, saya tertarik dengan layanan *${serviceTitle}* paket *${plan.name}* (${plan.tier}) seharga ${plan.price} ${plan.unit}. Bisa dibantu info lebih lanjut?`)}
+        href={buildWhatsAppLink(
+          `Halo DenBizz, saya tertarik dengan layanan *${serviceTitle}* paket *${plan.name}* (${plan.tier}) seharga ${plan.price} ${plan.unit}. Bisa dibantu info lebih lanjut?`
+        )}
         target="_blank"
         rel="noopener noreferrer"
         className={[
           "w-full py-3.5 font-semibold text-sm rounded-xl text-center block transition-all",
           plan.featured
-            ? "bg-tertiary text-on-tertiary hover:brightness-105 shadow-md"
+            ? "text-white hover:brightness-105 shadow-md"
             : plan.dark
-            ? "bg-white text-primary hover:brightness-95"
-            : "border border-outline-variant text-on-surface hover:bg-on-surface hover:text-white",
+            ? "bg-white hover:brightness-95"
+            : "border border-outline-variant text-on-surface hover:text-white transition-colors",
         ].join(" ")}
+        style={
+          plan.featured
+            ? { background: serviceColor }
+            : plan.dark
+            ? { color: serviceColor }
+            : undefined
+        }
+        onMouseEnter={(e) => {
+          if (!plan.featured && !plan.dark) {
+            (e.currentTarget as HTMLAnchorElement).style.background = serviceColor;
+            (e.currentTarget as HTMLAnchorElement).style.borderColor = serviceColor;
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!plan.featured && !plan.dark) {
+            (e.currentTarget as HTMLAnchorElement).style.background = "";
+            (e.currentTarget as HTMLAnchorElement).style.borderColor = "";
+          }
+        }}
       >
         {plan.cta}
       </a>
@@ -157,10 +187,9 @@ export function ServicesSection() {
           />
         </FadeIn>
 
-        {/* Tabs — horizontally scrollable on mobile, centered on desktop */}
+        {/* Tabs */}
         <FadeIn delay={0.1}>
           <div className="relative mb-10">
-            {/* edge fade hints (only relevant while scrollable, i.e. mobile) */}
             <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-surface-container-low to-transparent z-10 md:hidden" />
             <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-surface-container-low to-transparent z-10 md:hidden" />
 
@@ -179,9 +208,26 @@ export function ServicesSection() {
                     className={[
                       "flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold transition-all border whitespace-nowrap snap-center shrink-0",
                       isActive
-                        ? "bg-on-surface text-white border-on-surface shadow-md"
-                        : "bg-white text-on-surface-variant border-outline-variant/40 hover:border-primary hover:text-on-surface",
+                        ? "text-white border-transparent shadow-md"
+                        : "bg-white text-on-surface-variant border-outline-variant/40 hover:text-on-surface",
                     ].join(" ")}
+                    style={
+                      isActive
+                        ? { background: service.color, borderColor: service.color }
+                        : { borderColor: undefined }
+                    }
+                    onMouseEnter={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.borderColor = service.color;
+                        e.currentTarget.style.color = service.color;
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.borderColor = "";
+                        e.currentTarget.style.color = "";
+                      }
+                    }}
                   >
                     <Icon className="w-4 h-4 shrink-0" />
                     {service.shortLabel}
@@ -202,7 +248,12 @@ export function ServicesSection() {
         {/* Desktop grid */}
         <div className="hidden md:grid grid-cols-3 gap-8 items-center">
           {active.plans.map((plan) => (
-            <PlanCard key={plan.name} plan={plan} serviceTitle={active.title} />
+            <PlanCard
+              key={plan.name}
+              plan={plan}
+              serviceTitle={active.title}
+              serviceColor={active.color}
+            />
           ))}
         </div>
 
@@ -215,7 +266,11 @@ export function ServicesSection() {
           >
             {active.plans.map((plan) => (
               <div key={plan.name} className="min-w-[85%] snap-center">
-                <PlanCard plan={plan} serviceTitle={active.title} />
+                <PlanCard
+                  plan={plan}
+                  serviceTitle={active.title}
+                  serviceColor={active.color}
+                />
               </div>
             ))}
           </div>

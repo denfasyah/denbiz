@@ -48,10 +48,10 @@ export function PortfolioSection() {
             className="mb-0"
             title={
               <>
-                Proyek yang <span className="text-primary italic">Kami Kerjakan</span>
+                Karya yang <span className="text-primary italic">Kami Kerjakan</span>
               </>
             }
-            subtitle="Setiap proyek adalah cerita sukses. Ini sebagian kecil dari apa yang telah kami bangun bersama klien kami."
+            subtitle="Setiap karya adalah cerita sukses. Ini sebagian kecil dari apa yang telah kami bangun."
           />
 
           <div className="flex items-center gap-3 shrink-0">
