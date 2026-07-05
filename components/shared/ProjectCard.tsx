@@ -59,11 +59,11 @@ export function LaptopMockup({
         )}
       >
         <div className="rounded-t-md border-[3px] border-b-0 border-slate-700 bg-[#0c1424] overflow-hidden shadow-2xl">
-          {/* <div className="flex items-center gap-1 px-2 py-1 bg-black/40">
+          <div className="flex items-center gap-1 px-2 py-1 bg-black/40">
             <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
             <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-          </div> */}
+          </div>
           <div className="aspect-[20/10] overflow-hidden relative bg-[#0c1424]">
             {screenshot ? (
               /* ── Screenshot mode ── */
